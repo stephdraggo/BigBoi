@@ -12,6 +12,7 @@ namespace BigBoi.OptionsSystem
     public class VolumeSlider : MonoBehaviour
     {
         private Slider slider;
+        private string saveName;
 
         [SerializeField]
         private AudioMixer mixer;
@@ -27,6 +28,8 @@ namespace BigBoi.OptionsSystem
             if (mixer == null) throw new NullReEx("No audio mixer attached."); //if no slider
             if (string.IsNullOrEmpty(exposedParamName)) throw new NullReEx("No exposed volume parameter named."); //if no exposed parameter named
 
+            saveName = exposedParamName + "Slider"; //generate save name
+
             slider = GetComponent<Slider>(); //connect to own slider
 
             slider.minValue = range.x; //set max
@@ -41,9 +44,9 @@ namespace BigBoi.OptionsSystem
             entry.callback.AddListener(data => SaveValue()); //add method to entry listener
             trigger.triggers.Add(entry); //attach entry to event trigger
 
-            if (PlayerPrefs.HasKey(exposedParamName)) //if saved key
+            if (PlayerPrefs.HasKey(saveName)) //if saved key
             {
-                slider.value = PlayerPrefs.GetFloat(exposedParamName); //load key
+                slider.value = PlayerPrefs.GetFloat(saveName); //load key
             }
             else ChangeValue(range.y); //else set volume to max
         }
@@ -56,9 +59,12 @@ namespace BigBoi.OptionsSystem
             mixer.SetFloat(exposedParamName, _value);
         }
 
+        /// <summary>
+        /// Saves volume value to playerprefs on pointer up.
+        /// </summary>
         void SaveValue()
         {
-            PlayerPrefs.SetFloat(exposedParamName, slider.value);
+            PlayerPrefs.SetFloat(saveName, slider.value);
         }
     }
 }
