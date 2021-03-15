@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -8,6 +6,7 @@ using NullReEx = System.NullReferenceException;
 namespace BigBoi.OptionsSystem
 {
     [AddComponentMenu("BigBoi/Options Menu System/Mute Toggle")]
+    [RequireComponent(typeof(Toggle))]
     public class MuteToggle : MonoBehaviour
     {
         private Toggle toggle;
