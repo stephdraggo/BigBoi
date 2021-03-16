@@ -28,7 +28,10 @@ namespace BigBoi.OptionsSystem
         [SerializeField, Tooltip("Colours to display ")]
         private Color32 baseColour, selectedColour, changedColour;
 
-        [SerializeField, Tooltip("Attach the button to reset the keys to their original configuration here. Optional.")]
+        [SerializeField, Tooltip("Implement reset button for keys?")]
+        private bool implementResetButton=false;
+
+        [SerializeField, Tooltip("Attach the button to reset the keys to their original configuration here.")]
         private Button resetButton;
 
         public KeyBind[] keybinds;
