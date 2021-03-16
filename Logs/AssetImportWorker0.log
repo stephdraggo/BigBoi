@@ -219,3 +219,99 @@ System memory in use after: 57.1 MB.
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1556.
 Total: 1.865000 ms (FindLiveObjects: 0.163700 ms CreateObjectMapping: 0.028200 ms MarkObjects: 1.653300 ms  DeleteObjects: 0.017900 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 2261.080379 seconds.
+  path: Assets/BigBoi/OptionsMenuSystem/FullscreenToggle.cs
+  artifactKey: Guid(63a7d25078435ac4ab72b41edcd5d123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BigBoi/OptionsMenuSystem/FullscreenToggle.cs using Guid(63a7d25078435ac4ab72b41edcd5d123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86055a63e0f08daaa19b029af918bf39') in 0.028708 seconds
+  Import took 0.031393 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000911 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.32 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.036 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1099 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.1 MB.
+System memory in use after: 57.2 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1559.
+Total: 2.476200 ms (FindLiveObjects: 0.171200 ms CreateObjectMapping: 0.032100 ms MarkObjects: 2.250800 ms  DeleteObjects: 0.020500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.311407 seconds.
+  path: Assets/BigBoi/OptionsMenuSystem/MuteToggle.cs
+  artifactKey: Guid(c705b37ec8e98ae4b9c4a8e1e5646290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BigBoi/OptionsMenuSystem/MuteToggle.cs using Guid(c705b37ec8e98ae4b9c4a8e1e5646290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f38f6ffe8b650f3468be1b6b47c6da72') in 0.019044 seconds
+  Import took 0.021084 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000799 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.077 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1099 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.2 MB.
+System memory in use after: 57.3 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1561.
+Total: 2.295600 ms (FindLiveObjects: 0.321700 ms CreateObjectMapping: 0.051000 ms MarkObjects: 1.899900 ms  DeleteObjects: 0.021300 ms)
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 0.84 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 35.5 MB.
+System memory in use after: 35.6 MB.
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1561.
+Total: 2.416800 ms (FindLiveObjects: 0.191300 ms CreateObjectMapping: 0.039500 ms MarkObjects: 2.164100 ms  DeleteObjects: 0.019300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000917 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.011 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1099 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.3 MB.
+System memory in use after: 57.4 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1563.
+Total: 2.118100 ms (FindLiveObjects: 0.198000 ms CreateObjectMapping: 0.031400 ms MarkObjects: 1.869500 ms  DeleteObjects: 0.016900 ms)
+

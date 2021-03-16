@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using NullReEx = System.NullReferenceException;
 
 namespace BigBoi.OptionsSystem
 {
@@ -12,11 +10,8 @@ namespace BigBoi.OptionsSystem
     public class ResolutionsDropdown : MonoBehaviour
     {
         private Dropdown dropdown;
-
         private string saveName;
-
         private Resolution[] resolutions;
-
 
         void Start()
         {
