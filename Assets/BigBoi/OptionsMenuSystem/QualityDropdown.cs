@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,9 +12,8 @@ namespace BigBoi.OptionsSystem
         private Dropdown dropdown;
         private string saveName;
 
-        [Header("Quality Levels to Allow")]
         [SerializeField, Tooltip("Name the quality levels, if you name too many the excess names will be ignored.")]
-        private string[] qualityNames;
+        private string[] qualityLevelNames;
 
         void Start()
         {
@@ -55,7 +53,7 @@ namespace BigBoi.OptionsSystem
 
             for (int i = 0; i < PlayerPrefs.GetInt("QualityCount"); i++)
             {
-                item = new Dropdown.OptionData(qualityNames[i]); //change empty item to this
+                item = new Dropdown.OptionData(qualityLevelNames[i]); //change empty item to this
                 options.Add(item); //add item to list
             }
             dropdown.AddOptions(options); //add options to dropdown
@@ -67,6 +65,8 @@ namespace BigBoi.OptionsSystem
                 dropdown.value = index; //update display
             }
             else SetGraphics(0); //else set to lowest value
+
+            dropdown.RefreshShownValue(); //refresh display
         }
 
         void Update()
