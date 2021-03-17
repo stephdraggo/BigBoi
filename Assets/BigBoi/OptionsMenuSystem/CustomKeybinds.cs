@@ -72,6 +72,7 @@ namespace BigBoi.OptionsSystem
             if (resetButton != null) //if reset button attached
             {
                 resetButton.onClick.AddListener(ResetKeys); //add method to the button
+                resetButton.GetComponentInChildren<Text>().text = "Reset Keybinds";
             }
             resetToTheseKeys = new KeyCode[keyCount]; //make array for default keys
             for (int i = 0; i < keyCount; i++) //loop through original keys (before accessing playerprefs)
@@ -124,6 +125,7 @@ namespace BigBoi.OptionsSystem
                     if (Input.GetMouseButton(0))
                     {
                         selectedKey.KeyImage.color = baseColour;
+                        waitingForInput = false;
                         return;
                     }
                     if (e.isKey) //if event is a key press
