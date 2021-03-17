@@ -11,26 +11,22 @@ namespace BigBoi.InspectorEditor
     [CustomEditor(typeof(CustomKeybinds))]
     public class CustomKeybindsEditor : Editor
     {
-        private CustomKeybinds customKeybinds;
-
-        private SerializedProperty pButtonPrefab, pBaseColour, pSelectedColour, pChangedColour, pImplementResetButton, pResetButton, pKeybinds;
+        private SerializedProperty pButtonPrefab, pBaseColour, pSelectedColour, pChangedColour, pIncludeResetButton, pResetButton, pKeybinds;
 
         private AnimBool resetButtonImplemented = new AnimBool();
 
         private void OnEnable()
         {
-            customKeybinds = target as CustomKeybinds; //connect to target script
-
-            //attach variables
+            //attach properties
             pButtonPrefab = serializedObject.FindProperty("buttonPrefab");
             pBaseColour = serializedObject.FindProperty("baseColour");
             pSelectedColour = serializedObject.FindProperty("selectedColour");
             pChangedColour = serializedObject.FindProperty("changedColour");
-            pImplementResetButton = serializedObject.FindProperty("implementResetButton");
+            pIncludeResetButton = serializedObject.FindProperty("includeResetButton");
             pResetButton = serializedObject.FindProperty("resetButton");
             pKeybinds = serializedObject.FindProperty("keybinds");
 
-            resetButtonImplemented.value = pImplementResetButton.boolValue; //align bool values
+            resetButtonImplemented.value = pIncludeResetButton.boolValue; //align bool values
             resetButtonImplemented.valueChanged.AddListener(Repaint); //add repaint method to this bool
         }
 
@@ -39,7 +35,7 @@ namespace BigBoi.InspectorEditor
             serializedObject.Update();
 
             //display box and instructions for button prefab
-            EditorGUILayout.BeginVertical(GUI.skin.box); 
+            EditorGUILayout.BeginVertical(GUI.skin.box);
             {
                 //instructions
                 EditorGUILayout.LabelField("The button prefab must follow a specific format:", EditorStyles.boldLabel);
@@ -53,7 +49,7 @@ namespace BigBoi.InspectorEditor
             EditorGUILayout.EndVertical();
 
             //display box for choosing colours
-            EditorGUILayout.BeginVertical(GUI.skin.box); 
+            EditorGUILayout.BeginVertical(GUI.skin.box);
             {
                 EditorGUILayout.LabelField("Colours to Show Modified Keybinds", EditorStyles.boldLabel);
 
@@ -65,14 +61,25 @@ namespace BigBoi.InspectorEditor
             }
             EditorGUILayout.EndVertical();
 
+            //optional reset button
+            EditorGUILayout.PropertyField(pIncludeResetButton);
+            resetButtonImplemented.target = pIncludeResetButton.boolValue;
+            if (EditorGUILayout.BeginFadeGroup(resetButtonImplemented.faded))
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(pResetButton);
+                EditorGUI.indentLevel--;
+            }
+            EditorGUILayout.EndFadeGroup();
 
+            //display box for choosing colours
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            {
+                EditorGUILayout.PropertyField(pKeybinds);
+            }
+            EditorGUILayout.EndVertical();
 
-
-        }
-
-        private void OnSceneGUI()
-        {
-
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

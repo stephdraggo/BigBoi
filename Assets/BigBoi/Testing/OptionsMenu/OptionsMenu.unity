@@ -1088,13 +1088,15 @@ MonoBehaviour:
   buttonPrefab: {fileID: 4543528995338445501, guid: fe2777e58d90e4046855dbb3f7501672, type: 3}
   baseColour:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4291809231
   selectedColour:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4285822207
   changedColour:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4285857652
+  includeResetButton: 0
+  resetButton: {fileID: 0}
   keybinds:
   - actionName: Jump
     key: 32
@@ -1123,10 +1125,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 15
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
