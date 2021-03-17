@@ -121,6 +121,11 @@ namespace BigBoi.OptionsSystem
                 Event e = Event.current; //define event
                 if (e != null) //if e is not null
                 {
+                    if (Input.GetMouseButton(0))
+                    {
+                        selectedKey.KeyImage.color = baseColour;
+                        return;
+                    }
                     if (e.isKey) //if event is a key press
                     {
                         ChangeKey(selectedKey, e.keyCode); //call change key with selected key and e's keycode
@@ -134,11 +139,6 @@ namespace BigBoi.OptionsSystem
         //apparently this method gets index out of bounds
         void SelectKey(KeyBind _keybind)
         {
-            if (waitingForInput)
-            {
-                selectedKey.KeyImage.color = baseColour;
-            }
-
             _keybind.KeyImage.color = selectedColour; //change colour to "selected"
 
             selectedKey = _keybind; //assign currently selected
