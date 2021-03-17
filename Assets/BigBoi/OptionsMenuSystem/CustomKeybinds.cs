@@ -63,7 +63,7 @@ namespace BigBoi.OptionsSystem
                 if (!_group.isActiveAndEnabled) //if not enabled
                 {
                     _group.enabled = true; //enable it
-                    
+
                 }
             }
             else gameObject.AddComponent<VerticalLayoutGroup>(); //add a vertical layout group
@@ -94,18 +94,8 @@ namespace BigBoi.OptionsSystem
                 keybinds[i].DisplayText.text = keybinds[i].actionName; //display action name
                 keybinds[i].KeyImage.color = baseColour; //make sure button is base colour
 
-
-
-                //start() runs with no issue HOWEVER
-                //when the attached method is called from the button press
-                //this line is flagged as having an index out of bounds exception
-                //why?
-
-                //keybinds[i] seems to not exist in the context despite existing in the inspector?
-
-                //keybinds[i].KeyButton.onClick.AddListener(() => SelectKey(keybinds[i])); //add method with argument to button
-                KeyBind newKeyBind = keybinds[i];
-                keybinds[i].KeyButton.onClick.AddListener(() => SelectKey(newKeyBind));
+                KeyBind newKeyBind = keybinds[i]; //separate parameter (this fixes index out of bounds)
+                keybinds[i].KeyButton.onClick.AddListener(() => SelectKey(newKeyBind)); //add method with parameter to button
 
 
 
@@ -124,12 +114,12 @@ namespace BigBoi.OptionsSystem
             }
         }
 
-        private void Update()
+        private void OnGUI()
         {
             if (waitingForInput) //if input for key bind configuring needed
             {
                 Event e = Event.current; //define event
-                if (e != null)
+                if (e != null) //if e is not null
                 {
                     if (e.isKey) //if event is a key press
                     {
@@ -139,11 +129,16 @@ namespace BigBoi.OptionsSystem
             }
         }
 
-        
+
 
         //apparently this method gets index out of bounds
         void SelectKey(KeyBind _keybind)
         {
+            if (waitingForInput)
+            {
+                selectedKey.KeyImage.color = baseColour;
+            }
+
             _keybind.KeyImage.color = selectedColour; //change colour to "selected"
 
             selectedKey = _keybind; //assign currently selected
@@ -158,6 +153,8 @@ namespace BigBoi.OptionsSystem
             _keybind.ButtonText.text = _keybind.keyName; //update display
             _keybind.KeyImage.color = changedColour; //change colour of button to "changed"
 
+            PlayerPrefs.SetString(_keybind.saveName, _keybind.keyName);
+
             waitingForInput = false; //tell update to stop waiting for input
         }
 
@@ -166,6 +163,8 @@ namespace BigBoi.OptionsSystem
             for (int i = 0; i < keyCount; i++) //for every key
             {
                 ChangeKey(keybinds[i], resetToTheseKeys[i]); //call change keys for the key, feeding the default keys
+
+                keybinds[i].KeyImage.color = baseColour; //reset colour of button as well
             }
         }
     }
