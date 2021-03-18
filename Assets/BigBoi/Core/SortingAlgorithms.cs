@@ -58,27 +58,5 @@ namespace BigBoi
 
             return newArray;
         }
-
-
-        private void Start()
-        {
-            //test
-            int[] firstArray = new int[10];
-            string firstArrayText = "";
-            for (int i = 0; i < firstArray.Length; i++)
-            {
-                firstArray[i] = Random.Range(10, 20);
-                firstArrayText += (firstArray[i].ToString()+", ");
-            }
-            Debug.Log(firstArrayText);
-
-            int[] endArray= CountingSort(firstArray);
-            string endArrayText = "";
-            for (int i = 0; i < endArray.Length; i++)
-            {
-                endArrayText += (endArray[i].ToString() + ", ");
-            }
-            Debug.Log(endArrayText);
-        }
     }
 }
