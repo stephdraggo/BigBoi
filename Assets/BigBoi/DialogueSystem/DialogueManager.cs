@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace BigBoi.DialogueSystem
 {
+    [AddComponentMenu("BigBoi/Dialogue System/Dialogue Manager Instance")]
     public class DialogueManager : MonoBehaviour
     {
         #region instance
