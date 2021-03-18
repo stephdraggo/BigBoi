@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BigBoi
 {
-    public class SearchingAlgorithms : MonoBehaviour
+    public static class SearchingAlgorithms
     {
         /// <summary>
         /// Find the index of an object in a given array
@@ -26,31 +26,35 @@ namespace BigBoi
         }
 
         /// <summary>
-        /// Find the index of an int in an array of ints
-        /// Very fast BUT passed array must be sorted
+        /// Searches through list of objects for a specific object and returns index
         /// </summary>
-        /// <param name="_array">sorted array of ints</param>
-        /// <param name="_target">target int</param>
-        /// <returns>index of target int</returns>
-        public static int BinarySearch(int[] _array, int _target)
+        /// <typeparam name="T">object type</typeparam>
+        /// <param name="_list">list of objects</param>
+        /// <param name="_target">target object</param>
+        /// <param name="_comparer">compare type</param>
+        /// <returns></returns>
+        public static int BinarySearch<T>(List<T> _list, T _target, IComparer<T> _comparer)
         {
             //declare variables
             int lowIndex = 0;
-            int highIndex = _array.Length;
+            int highIndex = _list.Count;
             int midPoint;
 
             while (lowIndex <= highIndex) //while within bounds of high and low indices
             {
                 midPoint = (lowIndex + highIndex) / 2; //set/reset midpoint
-                if (_array[midPoint] > _target) //if midpoint higher than target
+
+                int comparison = _comparer.Compare(_list[midPoint], _target); //here is the comparer, James
+
+                if (comparison > 0) //if comparison is positive
                 {
                     highIndex = midPoint - 1; //decrease high index
                 }
-                else if (_array[midPoint] < _target) //if midpoint lower than target
+                else if (comparison < 0) //if comparison is negative
                 {
                     lowIndex = midPoint + 1; //increase low index
                 }
-                else //if midpoint and target are the same
+                else //if comparison is 0
                 {
                     return midPoint; //target found
                 }
