@@ -61,7 +61,7 @@ namespace BigBoi.DialogueSystem
             nameText.text = line.person.name; //attach correct name
             dialogueText.text = line.dialogueText; //attach correct text
 
-            foreach (Dialogue.ActionInfo _action in line.actions) //go through actions
+            foreach (DialogueActionInfo _action in line.actions) //go through actions
             {
                 Button button = null; //button for label display
 

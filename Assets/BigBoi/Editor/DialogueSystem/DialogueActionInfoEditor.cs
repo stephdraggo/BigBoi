@@ -4,23 +4,23 @@ using UnityEditor.AnimatedValues;
 
 namespace BigBoi.DialogueSystem
 {
-    [CustomEditor(typeof(Dialogue.ActionInfo))]
-    public class DialogueActionInfoEditor : PropertyDrawer
+    [CustomEditor(typeof(DialogueActionInfo))]
+    public class DialogueActionInfoEditor : Editor
     {
         private SerializedProperty pAction, pLabel, pTargetIndex,pJump;
 
         private AnimBool isJumpTo=new AnimBool();
 
-        
-
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        public void OnEnable()
         {
-            pAction = property.FindPropertyRelative("action");
-            pLabel = property.FindPropertyRelative("label");
-            pTargetIndex = property.FindPropertyRelative("targetIndex");
-            pJump = property.FindPropertyRelative("Jump");
+            pAction = serializedObject.FindProperty("action");
+            pLabel = serializedObject.FindProperty("label");
+            pTargetIndex = serializedObject.FindProperty("targetIndex");
+        }
 
-            EditorGUI.BeginProperty(position, label, property);
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
 
             EditorGUILayout.BeginVertical(GUI.skin.box);
             {
@@ -29,7 +29,7 @@ namespace BigBoi.DialogueSystem
 
 
 
-                isJumpTo.target = pJump.boolValue;
+                isJumpTo.target = pAction.enumValueIndex == (int)DialogueActions.JumpTo;
                 if (EditorGUILayout.BeginFadeGroup(isJumpTo.faded))
                 {
                     EditorGUILayout.PropertyField(pTargetIndex);
@@ -38,7 +38,7 @@ namespace BigBoi.DialogueSystem
             }
             EditorGUILayout.EndVertical();
 
-            EditorGUI.EndProperty();
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }
