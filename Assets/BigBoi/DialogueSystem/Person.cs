@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// This text is in the person class above the namespace
-/// </summary>
 namespace BigBoi.DialogueSystem
 {
-    [CreateAssetMenu(menuName ="BigBoi/Dialogue System/Person",fileName ="new person")]
     /// <summary>
-    /// This text is in the person class above the class name
+    /// Scriptable object for holding visual information about the person speaking. Have one per each unique speaker.
     /// </summary>
+    [CreateAssetMenu(menuName = "BigBoi/Dialogue System/Person", fileName = "new person")]
     public class Person : ScriptableObject
     {
-        [SerializeField] private Sprite sprite;
+        [SerializeField, Tooltip("Select an image to be displayed as the face of this person.\n\nCurrently does not suppot changing expressions.")]
+        private Sprite sprite;
         public Sprite Photo => sprite;
+
+        //add known bool
+        //add expressions
     }
 }
