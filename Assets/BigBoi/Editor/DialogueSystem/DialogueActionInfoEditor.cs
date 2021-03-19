@@ -9,9 +9,9 @@ namespace BigBoi.DialogueSystem
     {
         private SerializedProperty pAction, pLabel, pTargetIndex,pJump;
 
-        private AnimBool isJumpTo;
+        private AnimBool isJumpTo=new AnimBool();
 
-  
+        
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
