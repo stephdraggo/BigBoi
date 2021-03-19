@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d1f51c9b54e1b47ae60484fb4fed0a, type: 3}
+  m_Name: test01
+  m_EditorClassIdentifier: 
+  known: 0
+  seen: 0
+  sprites:
+    neutral: {fileID: 2126855429301889030, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
+    happy: {fileID: -3097651239445170847, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
+    sad: {fileID: 2649964617709286355, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
+    angry: {fileID: -6596489953073412400, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
+    embarrassed: {fileID: 2603169169035770958, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}

@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781039}
-  - component: {fileID: 1781038}
   - component: {fileID: 1781037}
+  - component: {fileID: 1781038}
   m_Layer: 0
   m_Name: instance
   m_TagString: Untagged
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bc560eb71c3274ba5eb4adedf0cafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: f9a00fa1a41fbb54db200129d44c79bf, type: 2}
 --- !u!114 &1781038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,15 +162,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3864678bfd61b64bb3d38423fbf5f98, type: 3}
+  m_Script: {fileID: 11500000, guid: 6271d2bd102955b43a55ea9812c12b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueSet: {fileID: 205870470}
-  buttonPrefab: {fileID: 1945982255176294181, guid: 9016de316497a4644958bb172f2d2769, type: 3}
-  buttonParent: {fileID: 2055277208}
-  faceCam: {fileID: 1406499390}
-  nameText: {fileID: 52907309}
-  dialogueText: {fileID: 834401366}
+  unknownFace: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  canvasParts:
+    faceCam: {fileID: 1406499390}
+    nameText: {fileID: 52907309}
+    dialogueText: {fileID: 834401366}
+    panel: {fileID: 205870470}
+    buttonPrefab: {fileID: 1945982255176294181, guid: 9016de316497a4644958bb172f2d2769, type: 3}
 --- !u!4 &1781039
 Transform:
   m_ObjectHideFlags: 0
@@ -571,11 +571,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &2055277208 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1885564764292524415, guid: 2dfcd5fd5a8671f4596ac46e64d55512, type: 3}
-  m_PrefabInstance: {fileID: 1885564764024072714}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1885564764024072714
 PrefabInstance:
   m_ObjectHideFlags: 0
