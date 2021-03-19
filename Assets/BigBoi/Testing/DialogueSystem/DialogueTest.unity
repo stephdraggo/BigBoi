@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781039}
-  - component: {fileID: 1781037}
   - component: {fileID: 1781038}
+  - component: {fileID: 1781037}
   m_Layer: 0
   m_Name: instance
   m_TagString: Untagged
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bc560eb71c3274ba5eb4adedf0cafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: 19654a6dec3e81d4ea446ab0fd70fe8a, type: 2}
 --- !u!114 &1781038
 MonoBehaviour:
   m_ObjectHideFlags: 0
