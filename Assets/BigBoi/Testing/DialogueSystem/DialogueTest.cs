@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BigBoi.DialogueSystem;
+//using BigBoi.OldDialogueSystem;
 
 public class DialogueTest : MonoBehaviour
 {
-    public Dialogue dialogue;
+    //public Dialogue dialogue;
     void Start()
     {
-        DialogueManager.instance.StartDialogue(dialogue);
+        //DialogueManager.instance.StartDialogue(dialogue);
     }
 }
