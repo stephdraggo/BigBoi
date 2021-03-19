@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,20 +33,19 @@ namespace BigBoi.DialogueSystem
 
         [SerializeField, Tooltip("UI object to enable and disable based on dialogue visibility.")]
         private GameObject dialogueSet;
+        [SerializeField, Tooltip("Button prefab for instantiating.")]
+        private GameObject buttonPrefab;
+        [SerializeField, Tooltip("Button container in hierarchy.")]
+        private Transform buttonParent;
 
         [SerializeField, Tooltip("Object to display the person's face on.")]
         private Image faceCam;
         [SerializeField, Tooltip("Display text area.")]
         private Text nameText, dialogueText;
-        [SerializeField, Tooltip("Default action button.")]
-        private Button nextButton, byeButton;
 
-        [SerializeField, Tooltip("Extra action buttons, for 'Jump To' actions or otherwise." +
-            "\nRecommended to have at least two." +
-            "\n\nMaybe implement extra button instantiate in future.")]
-        private Button[] extraButtons;
+        private List<Button> actionButtons = new List<Button>();
 
-        [SerializeField]private Dialogue activeDialogue; //serialised for testing
+         private Dialogue activeDialogue; 
 
         /// <summary>
         /// Update dialogue display with all the information for the current line along with
@@ -53,49 +53,47 @@ namespace BigBoi.DialogueSystem
         /// </summary>
         private void UpdateDisplay()
         {
+            ResetButtons(); //clear previous methods from buttons
+
             Dialogue.DialogueLine line = activeDialogue.Lines[activeDialogue.activeIndex]; //get current line of dialogue
 
             faceCam.sprite = line.person.Photo; //attach correct picture
             nameText.text = line.person.name; //attach correct name
             dialogueText.text = line.dialogueText; //attach correct text
 
-            ResetButtons(); //clear previous methods from buttons
-
-            //change to foreach??
-            //would mean no more stipulation about not using Next with Jump To
-            for (int i = 0; i < line.actions.Length; i++) //go through actions available on this line of dialogue
+            foreach (Dialogue.ActionInfo _action in line.actions) //go through actions
             {
                 Button button = null; //button for label display
 
+                button = Instantiate(buttonPrefab, buttonParent).GetComponent<Button>(); //create button
+                button.gameObject.SetActive(true); //activate button
+
                 int target = 0; //reset target for errors
-                switch (line.actions[i].action) //check what action type
+
+                switch (_action.action)
                 {
                     case DialogueActions.Next:
-                        nextButton.gameObject.SetActive(true); //activate button
                         //adding jumpto method, towards the next line of dialogue in the array
                         target = activeDialogue.activeIndex + 1; //set target
-                        nextButton.onClick.AddListener(() => JumpTo(target)); //add method with target
-                        button = nextButton; //get which button to re-label
+                        button.onClick.AddListener(() => JumpTo(target)); //add method with target
                         break;
 
                     case DialogueActions.Bye:
-                        byeButton.gameObject.SetActive(true);
-                        byeButton.onClick.AddListener(EndDialogue); //add method end dialogue
-                        button = byeButton;
+                        button.onClick.AddListener(EndDialogue); //add method end dialogue
                         break;
 
                     case DialogueActions.JumpTo:
-                        extraButtons[i].gameObject.SetActive(true);
-                        target = line.actions[i].target;
-                        extraButtons[i].onClick.AddListener(() => JumpTo(target));
-                        button = extraButtons[i];
+                        target = _action.target; //get target
+                        button.onClick.AddListener(() => JumpTo(target));
                         break;
 
                     default:
                         break;
                 }
 
-                button.GetComponentInChildren<Text>().text = line.actions[i].label; //label button correctly
+                actionButtons.Add(button); //add to list
+
+                button.GetComponentInChildren<Text>().text = _action.label; //label button correctly
             }
         }
 
@@ -112,20 +110,17 @@ namespace BigBoi.DialogueSystem
         }
 
         /// <summary>
-        /// Remove methods and deactivate buttons.
+        /// Remove old buttons.
         /// </summary>
         private void ResetButtons()
         {
-            nextButton.onClick.RemoveAllListeners();
-            nextButton.gameObject.SetActive(false);
-
-            byeButton.onClick.RemoveAllListeners();
-            byeButton.gameObject.SetActive(false);
-
-            foreach (Button _button in extraButtons)
+            if (actionButtons.Count > 0)
             {
-                _button.onClick.RemoveAllListeners();
-                _button.gameObject.SetActive(false);
+                foreach (Button _button in actionButtons)
+                {
+                    Destroy(_button.gameObject);
+                }
+                actionButtons.Clear();
             }
         }
 
@@ -153,13 +148,6 @@ namespace BigBoi.DialogueSystem
             }
 
             UpdateDisplay();
-        }
-
-
-
-        private void Start()
-        {
-            StartDialogue(activeDialogue);
         }
     }
 

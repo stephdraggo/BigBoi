@@ -10,9 +10,24 @@ namespace BigBoi.DialogueSystem
     {
         [SerializeField, Tooltip("Select an image to be displayed as the face of this person.\n\nCurrently does not suppot changing expressions.")]
         private Sprite sprite;
+
         public Sprite Photo => sprite;
 
-        //add known bool
+        [Tooltip("Is this person known to the player.")]
+        public bool known;
+
+        public string Name
+        {
+            get
+            {
+                if (known)
+                {
+                    return name;
+                }
+                return "???";
+            }
+        }
+
         //add expressions
     }
 }

@@ -18,15 +18,29 @@ MonoBehaviour:
     actions:
     - action: 0
       label: Next Text
+      target: 0
     - action: 1
       label: Eww it's Ryan
+      target: 0
   - person: {fileID: 11400000, guid: 92f2ddd02de8e48409f89371490a5ed8, type: 2}
     dialogueText: Yeet
     actions:
-    - action: 0
+    - action: 2
       label: Yooooo
+      target: 2
+    - action: 2
+      label: Yooooo2
+      target: 3
   - person: {fileID: 11400000, guid: 3a3eae26b31d7644db447ea8f2385ef8, type: 2}
     dialogueText: Okay done
     actions:
+    - action: 0
+      label: Bye
+      target: 0
+  - person: {fileID: 11400000, guid: 3a3eae26b31d7644db447ea8f2385ef8, type: 2}
+    dialogueText: Okay done2
+    actions:
     - action: 1
       label: Bye
+      target: 0
+  activeIndex: 0
