@@ -6,7 +6,7 @@ namespace BigBoi.DialogueSystem
     /// <summary>
     /// Scriptable object holding all the information for one full dialogue.
     /// </summary>
-    [CreateAssetMenu(menuName ="BigBoi/Dialogue System/Dialogue Set",fileName ="new dialogue")]
+    [CreateAssetMenu(menuName = "BigBoi/Dialogue System/Dialogue Set", fileName = "new dialogue")]
     public class Dialogue : ScriptableObject
     {
         /// <summary>
@@ -15,7 +15,7 @@ namespace BigBoi.DialogueSystem
         /// and possible actions to take in response.
         /// </summary>
         [Serializable]
-        public struct DialogueLine 
+        public struct DialogueLine
         {
             [Tooltip("The person to display while showing this line of dialogue.")]
             public Person person;
@@ -44,7 +44,7 @@ namespace BigBoi.DialogueSystem
             public string label;
 
             [Tooltip("In 'Jump To' actions, give dialogue line index to jump to. Ignored in other types.")]
-            public int target;
+            public int targetIndex;
         }
 
         [SerializeField, Tooltip("The lines in this dialogue.")]
@@ -52,6 +52,22 @@ namespace BigBoi.DialogueSystem
 
         public DialogueLine[] Lines => lines;
 
-        public int activeIndex=0;
+        public DialogueLine activeLine;
+
+        /// <summary>
+        /// Get line at this index
+        /// </summary>
+        public DialogueLine GetTarget(int _index)
+        {
+            return Lines[_index];
+        }
+
+        /// <summary>
+        /// Get index of this line
+        /// </summary>
+        public int GetIndex(DialogueLine _line)
+        {
+            return SearchingAlgorithms.LinearSearch(lines, _line);
+        }
     }
 }

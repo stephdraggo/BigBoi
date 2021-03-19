@@ -10,11 +10,11 @@ namespace BigBoi
         /// Find the index of an object in a given array
         /// </summary>
         /// <returns>index of target in array</returns>
-        public static int LinearSearch(object[] _array, object _target)
+        public static int LinearSearch<T>(T[] _array, T _target)
         {
             for (int i = 0; i < _array.Length; i++) //go through array
             {
-                if (_array[i] == _target) //check each item if the target item
+                if (_array[i].Equals(_target)) //check each item if the target item
                 {
                     return i; //end method and return index
                 }

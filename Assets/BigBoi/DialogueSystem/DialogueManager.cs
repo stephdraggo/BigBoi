@@ -45,7 +45,7 @@ namespace BigBoi.DialogueSystem
 
         private List<Button> actionButtons = new List<Button>();
 
-         private Dialogue activeDialogue; 
+        private Dialogue activeDialogue;
 
         /// <summary>
         /// Update dialogue display with all the information for the current line along with
@@ -55,7 +55,7 @@ namespace BigBoi.DialogueSystem
         {
             ResetButtons(); //clear previous methods from buttons
 
-            Dialogue.DialogueLine line = activeDialogue.Lines[activeDialogue.activeIndex]; //get current line of dialogue
+            Dialogue.DialogueLine line = activeDialogue.activeLine; //get current line of dialogue
 
             faceCam.sprite = line.person.Photo; //attach correct picture
             nameText.text = line.person.name; //attach correct name
@@ -68,13 +68,13 @@ namespace BigBoi.DialogueSystem
                 button = Instantiate(buttonPrefab, buttonParent).GetComponent<Button>(); //create button
                 button.gameObject.SetActive(true); //activate button
 
-                int target = 0; //reset target for errors
+                Dialogue.DialogueLine target; //reset target for errors
 
                 switch (_action.action)
                 {
                     case DialogueActions.Next:
                         //adding jumpto method, towards the next line of dialogue in the array
-                        target = activeDialogue.activeIndex + 1; //set target
+                        target = activeDialogue.Lines[activeDialogue.GetIndex(activeDialogue.activeLine) + 1]; //set target
                         button.onClick.AddListener(() => JumpTo(target)); //add method with target
                         break;
 
@@ -83,7 +83,7 @@ namespace BigBoi.DialogueSystem
                         break;
 
                     case DialogueActions.JumpTo:
-                        target = _action.target; //get target
+                        target = activeDialogue.GetTarget(_action.targetIndex); //get target
                         button.onClick.AddListener(() => JumpTo(target));
                         break;
 
@@ -101,10 +101,10 @@ namespace BigBoi.DialogueSystem
         /// Change active index and update display.
         /// Maybe change from int to DialogueLine for easy dragging and dropping
         /// </summary>
-        /// <param name="_index">index of line to jump to</param>
-        private void JumpTo(int _index)
+        /// <param name="_target">line to jump to</param>
+        private void JumpTo(Dialogue.DialogueLine _target)
         {
-            activeDialogue.activeIndex = _index;
+            activeDialogue.activeLine = _target;
 
             UpdateDisplay();
         }
@@ -144,7 +144,7 @@ namespace BigBoi.DialogueSystem
 
             if (_startOver) //start at index 0?
             {
-                activeDialogue.activeIndex = 0;
+                activeDialogue.activeLine = activeDialogue.Lines[0];
             }
 
             UpdateDisplay();

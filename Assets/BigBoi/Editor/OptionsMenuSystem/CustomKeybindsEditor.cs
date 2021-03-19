@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
-using UnityEditor.IMGUI.Controls;
 using BigBoi.OptionsSystem;
 
 namespace BigBoi.InspectorEditor
