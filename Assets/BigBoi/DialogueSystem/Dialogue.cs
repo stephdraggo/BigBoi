@@ -43,6 +43,18 @@ namespace BigBoi.DialogueSystem
             [Tooltip("Text to display on the action button.")]
             public string label;
 
+            public bool Jump 
+            {
+                get
+                {
+                    if (action == DialogueActions.JumpTo)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
             [Tooltip("In 'Jump To' actions, give dialogue line index to jump to. Ignored in other types.")]
             public int targetIndex;
         }

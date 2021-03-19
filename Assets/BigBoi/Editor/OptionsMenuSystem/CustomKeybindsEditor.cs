@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
-using BigBoi.OptionsSystem;
 
-namespace BigBoi.InspectorEditor
+namespace BigBoi.OptionsSystem
 {
     [CustomEditor(typeof(CustomKeybinds))]
     public class CustomKeybindsEditor : Editor
@@ -41,7 +40,7 @@ namespace BigBoi.InspectorEditor
                 EditorGUILayout.LabelField("Child object is a Button - will display key currently bound", EditorStyles.label);
                 EditorGUI.indentLevel--;
 
-                EditorGUILayout.PropertyField(pButtonPrefab); //see if vertical layout needed?
+                EditorGUILayout.PropertyField(pButtonPrefab);
             }
             EditorGUILayout.EndVertical();
 
