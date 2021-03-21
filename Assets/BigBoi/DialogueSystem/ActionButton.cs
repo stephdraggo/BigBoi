@@ -24,14 +24,17 @@ namespace BigBoi.DialogueSystem
                     return _dialogue.LineIndex(_line) + 1;
 
                 case ActionTypes.End:
-                    return 0;
+                    return -1;
 
                 case ActionTypes.JumpTo:
                     return target;
 
                 default:
-                    return 0;
+                    return -1;
             }
         }
+
+        //add things here for if you want to add other methods to a button from outside scripts
+        //delegates?
     }
 }

@@ -23,15 +23,7 @@ namespace BigBoi.DialogueSystem
         private List<ActionButton> responses=new List<ActionButton>();
         public List<ActionButton> Responses => responses;
 
-        [SerializeField]
-        private string label, label2;
-        public string Label => label;
-        public string Label2 => label2;
-
-        [SerializeField]
-        private int target, target2;
-        public int Target => target;
-        public int Target2 => target2;
+        
 
         public void UpdateUI()
         {
