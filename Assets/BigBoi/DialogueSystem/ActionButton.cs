@@ -3,18 +3,22 @@ using UnityEngine;
 
 namespace BigBoi.DialogueSystem
 {
+    /// <summary>
+    /// Contains information for one dialogue action.
+    /// Type of action, text to display on button, and target index for "JumpTo" type actions.
+    /// </summary>
     [Serializable]
     public class ActionButton
     {
-        [SerializeField]
+        [SerializeField,Tooltip("Type of this action. Determines what line of dialogue this will lead to, if any.")]
         private ActionTypes type;
         public ActionTypes Type => type;
 
-        [SerializeField]
+        [SerializeField,Tooltip("Display text for this action.")]
         private string label;
         public string Label => label;
 
-        [SerializeField]
+        [SerializeField,Tooltip("Target index for actions of type 'JumpTo', disregarded on other types.")]
         private int target;
         public int Target(Line _line, Dialogue _dialogue)
         {
