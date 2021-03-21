@@ -8,9 +8,8 @@ namespace BigBoi.DialogueSystem
     public class Line
     {
         [SerializeField]
-        private int speakerIndex;
-        public int SpeakerIndex => speakerIndex;
         private Person person;
+        public Person Speaker=>person;
 
         [SerializeField]
         private Expressions expression;
@@ -36,10 +35,8 @@ namespace BigBoi.DialogueSystem
 
 
 
-        public void UpdateUI(Dialogue _dialogue)
+        public void UpdateUI()
         {
-            person = _dialogue.People[SpeakerIndex];
-
             Manager.instance.CanvasParts.faceCam.sprite = person.Picture(Expression);
             Manager.instance.CanvasParts.nameText.text = person.Name;
             Manager.instance.CanvasParts.dialogueText.text = DialogueText;

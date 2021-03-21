@@ -57,7 +57,7 @@ namespace BigBoi.DialogueSystem
         public void StartDialogue(Dialogue _dialogue)
         {
             CanvasParts.panel.SetActive(true);
-            _dialogue.Lines[0].UpdateUI(_dialogue);
+            _dialogue.Lines[0].UpdateUI();
         }
     }
     public enum Expressions
