@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   known: 1
   seen: 1
-  sprites:
+  pictures:
     neutral: {fileID: 2126855429301889030, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
     happy: {fileID: -3097651239445170847, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
     sad: {fileID: 2649964617709286355, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
     angry: {fileID: -6596489953073412400, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
-    embarrassed: {fileID: 2603169169035770958, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
+    embarrassed: {fileID: 1864251151457916256, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
