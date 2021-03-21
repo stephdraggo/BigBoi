@@ -41,9 +41,9 @@ namespace BigBoi.DialogueSystem
         /// <summary>
         /// Set of face display options for character.
         /// </summary>
-        [SerializeField,Tooltip("Set of default expressions. To add or remove expressions, edit the 'ExpressionSet' struct in Person.cs and the 'Expressions' enum in Manager.cs.")]
+        [SerializeField, Tooltip("Set of default expressions. To add or remove expressions, edit the 'ExpressionSet' struct in Person.cs and the 'Expressions' enum in Manager.cs.")]
         private ExpressionSet pictures;
-        
+
         /// <summary>
         /// Default expression options for the character.
         /// To add or remove expressions, edit this struct and the 'Expressions' enum in Manager.cs

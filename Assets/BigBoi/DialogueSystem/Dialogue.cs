@@ -12,7 +12,7 @@ namespace BigBoi.DialogueSystem
         /// <summary>
         /// Array of dialogue lines.
         /// </summary>
-        [SerializeField,Tooltip("Add lines to this dialogue set here.")]
+        [SerializeField, Tooltip("Add lines to this dialogue set here.")]
         private Line[] lines;
         public Line[] Lines => lines;
 
