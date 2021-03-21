@@ -15,7 +15,7 @@ MonoBehaviour:
   people:
   - {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
   lines:
-  - speakerIndex: 0
+  - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 1
     dialogueText: Good morning!
     responseType: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
     label2: 
     target: 1
     target2: 0
-  - speakerIndex: 0
+  - person: {fileID: 0}
     expression: 0
     dialogueText: 
     responseType: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
     label2: 
     target: 0
     target2: 0
-  - speakerIndex: 0
+  - person: {fileID: 0}
     expression: 0
     dialogueText: 
     responseType: 0
