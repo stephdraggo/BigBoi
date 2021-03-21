@@ -10,15 +10,25 @@ namespace BigBoi.DialogueSystem
     [Serializable]
     public class ActionButton
     {
-        [SerializeField,Tooltip("Type of this action. Determines what line of dialogue this will lead to, if any.")]
+        /// <summary>
+        /// Type of this action.
+        /// Determines what line of dialogue this action will lead to, if any.
+        /// </summary>
+        [SerializeField, Tooltip("Type of this action. Determines what line of dialogue this will lead to, if any.")]
         private ActionTypes type;
         public ActionTypes Type => type;
 
-        [SerializeField,Tooltip("Display text for this action.")]
+        /// <summary>
+        /// Text to display on this action's button.
+        /// </summary>
+        [SerializeField, Tooltip("Display text for this action.")]
         private string label;
         public string Label => label;
 
-        [SerializeField,Tooltip("Target index for actions of type 'JumpTo', disregarded on other types.")]
+        /// <summary>
+        /// Index for "JumpTo" actions to target, disregarded for other types.
+        /// </summary>
+        [SerializeField, Tooltip("Target index for actions of type 'JumpTo', disregarded on other types.")]
         private int target;
         public int Target(Line _line, Dialogue _dialogue)
         {
