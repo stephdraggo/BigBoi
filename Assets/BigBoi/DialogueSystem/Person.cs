@@ -3,10 +3,29 @@ using UnityEngine;
 
 namespace BigBoi.DialogueSystem
 {
+    /// <summary>
+    /// Unique data for a character in dialogue.
+    /// Allows name and face to be hidden and revealed based on bools.
+    /// Shows the correct sprite for whichever expression the character is supposed to have.
+    /// </summary>
     [CreateAssetMenu(menuName = "BigBoi/Dialogue System/Person", fileName = "new person")]
     public class Person : ScriptableObject
     {
-        public bool known, seen;
+        /// <summary>
+        /// Shows name if true, else shows "???"
+        /// </summary>
+        [Tooltip("If this character is known to the player. Allows name to be shown, otherwise '???'.")]
+        public bool known;
+
+        /// <summary>
+        /// Shows face if true, else shows "unknown face" set in Manager.cs
+        /// </summary>
+        [Tooltip("If the player can see this character. Displays face sprite, otherwise displays 'unknown face' from the manager.")]
+        public bool seen;
+
+        /// <summary>
+        /// Returns name of character/object if "known" is true, else returns "???"
+        /// </summary>
         public string Name
         {
             get
@@ -18,8 +37,17 @@ namespace BigBoi.DialogueSystem
                 return "???";
             }
         }
-        [SerializeField]
-        private ExpressionSet sprites;
+
+        /// <summary>
+        /// Set of face display options for character.
+        /// </summary>
+        [SerializeField,Tooltip("Set of default expressions. To add or remove expressions, edit the 'ExpressionSet' struct in Person.cs and the 'Expressions' enum in Manager.cs.")]
+        private ExpressionSet pictures;
+        
+        /// <summary>
+        /// Default expression options for the character.
+        /// To add or remove expressions, edit this struct and the 'Expressions' enum in Manager.cs
+        /// </summary>
         [Serializable]
         public struct ExpressionSet
         {
@@ -29,6 +57,12 @@ namespace BigBoi.DialogueSystem
             public Sprite angry;
             public Sprite embarrassed;
         }
+
+        /// <summary>
+        /// Gets correct face sprite based on expression given.
+        /// </summary>
+        /// <param name="_expression">which expression to return the face for</param>
+        /// <returns>the sprite to display</returns>
         public Sprite Picture(Expressions _expression)
         {
             if (seen)
@@ -36,22 +70,22 @@ namespace BigBoi.DialogueSystem
                 switch (_expression)
                 {
                     case Expressions.Neutral:
-                        return sprites.neutral;
+                        return pictures.neutral;
 
                     case Expressions.Happy:
-                        return sprites.happy;
+                        return pictures.happy;
 
                     case Expressions.Sad:
-                        return sprites.sad;
+                        return pictures.sad;
 
                     case Expressions.Angry:
-                        return sprites.angry;
+                        return pictures.angry;
 
                     case Expressions.Embarrassed:
-                        return sprites.embarrassed;
+                        return pictures.embarrassed;
 
                     default:
-                        return sprites.neutral;
+                        return pictures.neutral;
                 }
             }
             return Manager.instance.UnknownFace;

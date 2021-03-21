@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace BigBoi.DialogueSystem
 {
+    [AddComponentMenu("BigBoi/Dialogue System/Manager")]
     public class Manager : MonoBehaviour
     {
         #region instance
@@ -56,12 +57,12 @@ namespace BigBoi.DialogueSystem
         public void AddButtons(ActionButton _actionButton,Line _line)
         {
             GameObject newButton = Instantiate(canvasParts.buttonPrefab, canvasParts.buttonHolder);
-            newButton.GetComponent<Button>().onClick.AddListener(() => ChangeText(_actionButton.Target(_line, activeDialogue)));
+            newButton.GetComponent<Button>().onClick.AddListener(() => ClickButton(_actionButton.Target(_line, activeDialogue)));
             newButton.GetComponentInChildren<Text>().text = _actionButton.Label;
             buttons.Add(newButton);
         }
 
-        public void ChangeText(int _target)
+        public void ClickButton(int _target)
         {
             foreach (GameObject _button in buttons)
             {
