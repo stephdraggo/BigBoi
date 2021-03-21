@@ -34,6 +34,7 @@ namespace BigBoi.DialogueSystem
             public Image faceCam;
             public Text nameText;
             public Text dialogueText;
+            public Transform buttonHolder;
             public GameObject panel;
             public GameObject buttonPrefab;
         }
@@ -41,23 +42,41 @@ namespace BigBoi.DialogueSystem
         private CanvasElements canvasParts;
         public CanvasElements CanvasParts => canvasParts;
 
+        private Dialogue activeDialogue;
 
-
-
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
+        private List<GameObject> buttons = new List<GameObject>();
 
         public void StartDialogue(Dialogue _dialogue)
         {
+            activeDialogue = _dialogue;
             CanvasParts.panel.SetActive(true);
             _dialogue.Lines[0].UpdateUI();
+        }
+
+        public void AddButtons(ActionButton _actionButton,Line _line)
+        {
+            GameObject newButton = Instantiate(canvasParts.buttonPrefab, canvasParts.buttonHolder);
+            newButton.GetComponent<Button>().onClick.AddListener(() => ChangeText(_actionButton.Target(_line, activeDialogue)));
+            newButton.GetComponentInChildren<Text>().text = _actionButton.Label;
+            buttons.Add(newButton);
+        }
+
+        public void ChangeText(int _target)
+        {
+            foreach (GameObject _button in buttons)
+            {
+                Destroy(_button);
+            }
+            buttons.Clear();
+
+            if (_target > 0)
+            {
+                activeDialogue.Lines[_target].UpdateUI();
+            }
+            else
+            {
+                canvasParts.panel.SetActive(false);
+            }
         }
     }
     public enum Expressions
@@ -72,6 +91,6 @@ namespace BigBoi.DialogueSystem
     {
         Next,
         End,
-        Choice,
+        JumpTo,
     }
 }

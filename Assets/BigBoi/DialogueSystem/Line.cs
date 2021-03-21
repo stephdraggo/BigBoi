@@ -20,8 +20,8 @@ namespace BigBoi.DialogueSystem
         public string DialogueText => dialogueText;
 
         [SerializeField]
-        private ActionTypes responseType;
-        public ActionTypes ResponseType => responseType;
+        private List<ActionButton> responses=new List<ActionButton>();
+        public List<ActionButton> Responses => responses;
 
         [SerializeField]
         private string label, label2;
@@ -33,14 +33,16 @@ namespace BigBoi.DialogueSystem
         public int Target => target;
         public int Target2 => target2;
 
-
-
         public void UpdateUI()
         {
             Manager.instance.CanvasParts.faceCam.sprite = person.Picture(Expression);
             Manager.instance.CanvasParts.nameText.text = person.Name;
             Manager.instance.CanvasParts.dialogueText.text = DialogueText;
 
+            foreach (ActionButton _response in responses)
+            {
+                Manager.instance.AddButtons(_response,this);
+            }
         }
     }
 }

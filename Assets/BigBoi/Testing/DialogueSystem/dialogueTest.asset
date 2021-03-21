@@ -12,29 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04206fe3ac2e4cf4eb4313c333b8b6a1, type: 3}
   m_Name: dialogueTest
   m_EditorClassIdentifier: 
-  people:
-  - {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
   lines:
   - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 1
-    dialogueText: Good morning!
-    responseType: 0
+    dialogueText: Good morning! 0
+    responses:
+    - type: 0
+      label: next
+      target: 0
+    - type: 2
+      label: jump
+      target: 3
     label: Hello
     label2: 
     target: 1
     target2: 0
-  - person: {fileID: 0}
+  - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 0
-    dialogueText: 
-    responseType: 0
+    dialogueText: here is 1
+    responses:
+    - type: 0
+      label: next
+      target: 0
     label: 
     label2: 
     target: 0
     target2: 0
-  - person: {fileID: 0}
+  - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 0
-    dialogueText: 
-    responseType: 0
+    dialogueText: here is 2
+    responses:
+    - type: 0
+      label: next
+      target: 0
+    label: 
+    label2: 
+    target: 0
+    target2: 0
+  - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
+    expression: 3
+    dialogueText: this is the end 3
+    responses:
+    - type: 1
+      label: finish
+      target: 0
     label: 
     label2: 
     target: 0

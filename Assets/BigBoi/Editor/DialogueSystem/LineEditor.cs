@@ -16,7 +16,7 @@ namespace BigBoi.DialogueSystem
         {
             get
             {
-                if (pResponseType.enumValueIndex == (int)ActionTypes.Choice)
+                if (pResponseType.enumValueIndex == (int)ActionTypes.JumpTo)
                 {
                     return true;
                 }

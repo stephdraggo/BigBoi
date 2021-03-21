@@ -171,6 +171,7 @@ MonoBehaviour:
     faceCam: {fileID: 1406499390}
     nameText: {fileID: 52907309}
     dialogueText: {fileID: 834401366}
+    buttonHolder: {fileID: 886856279}
     panel: {fileID: 205870470}
     buttonPrefab: {fileID: 1945982255176294181, guid: 9016de316497a4644958bb172f2d2769, type: 3}
 --- !u!4 &1781039
@@ -285,6 +286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &886856279 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1885564764292524415, guid: 2dfcd5fd5a8671f4596ac46e64d55512, type: 3}
+  m_PrefabInstance: {fileID: 1885564764024072714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &908594027
 GameObject:
   m_ObjectHideFlags: 0
