@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BigBoi.DialogueSystem
 {
@@ -48,7 +49,13 @@ namespace BigBoi.DialogueSystem
             }
         }
 
-        //add things here for if you want to add other methods to a button from outside scripts
-        //delegates?
+        /// <summary>
+        /// Allows adding completely custom methods to this button.
+        /// Easy implementation of a friendship system, or opening quest menus etc.
+        /// Must be a prefab object.
+        /// </summary>
+        [SerializeField,Tooltip("Drag PREFAB objects to assign extra custom methods to this method.\nFor example friendship point system or open a quest panel.")]
+        private Button.ButtonClickedEvent clickedEvent = new Button.ButtonClickedEvent();
+        public Button.ButtonClickedEvent ClickedEvent => clickedEvent;
     }
 }

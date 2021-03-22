@@ -99,14 +99,22 @@ namespace BigBoi.DialogueSystem
         /// <summary>
         /// Adds an action button to the dialogue.
         /// Connects custom method and label to button.
+        /// Also connects whatever extra methods were assigned in the dialogue to this button.
         /// </summary>
         /// <param name="_actionButton">Method details and label to display on this button.</param>
         /// <param name="_line">line this action button belongs to, for finding target of a "Next" type action.</param>
         public void AddButtons(ActionButton _actionButton, Line _line)
         {
             GameObject newButton = Instantiate(canvasParts.buttonPrefab, canvasParts.buttonHolder);
-            newButton.GetComponent<Button>().onClick.AddListener(() => ClickButton(_actionButton.Target(_line, activeDialogue)));
+
+            // hehe
+            Button butt = newButton.GetComponent<Button>();
+
+            butt.onClick = _actionButton.ClickedEvent;
+            butt.onClick.AddListener(() => ClickButton(_actionButton.Target(_line, activeDialogue)));
             newButton.GetComponentInChildren<Text>().text = _actionButton.Label;
+
+            
             buttons.Add(newButton);
         }
 

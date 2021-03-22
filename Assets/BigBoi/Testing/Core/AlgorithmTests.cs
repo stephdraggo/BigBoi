@@ -28,12 +28,12 @@ namespace BigBoi
             }
 
             //do ints extend IComparable???
-            orderedList.CountingSort();
+            firstArray.CountingSort();
 
             string endArrayText = "";
-            for (int i = 0; i < orderedList.Count; i++)
+            for (int i = 0; i < firstArray.Count; i++)
             {
-                endArrayText += (orderedList[i].ToString() + ", ");
+                endArrayText += (firstArray[i].ToString() + ", ");
             }
 
             consoleBox.text = "The generated array is:\n" + firstArrayText + "\n\nUsing Counting Sort Algorithm gives this new array:\n" + endArrayText;

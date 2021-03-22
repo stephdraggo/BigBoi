@@ -9,5 +9,14 @@ public class DialogueTest : MonoBehaviour
     void Start()
     {
         Manager.instance.StartDialogue(dialogue);
+
+
+
+    }
+
+
+    public void Yeeee()
+    {
+        Debug.Log("yeah the method adding works");
     }
 }
