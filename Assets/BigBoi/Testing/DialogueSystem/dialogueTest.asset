@@ -15,48 +15,61 @@ MonoBehaviour:
   lines:
   - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 1
-    dialogueText: Good morning! 0
+    dialogueText: Good morning!
     responses:
     - type: 0
-      label: next
+      label: Hello!
       target: 0
+      clickedEvent:
+        m_PersistentCalls:
+          m_Calls: []
     - type: 2
-      label: jump
+      label: Uh bye
       target: 3
-    label: Hello
-    label2: 
-    target: 1
-    target2: 0
+      clickedEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 7205855545314433783, guid: bbf7d6cbaf7ebfc45a2f342f18383514, type: 3}
+            m_TargetAssemblyTypeName: DialogueTest, Assembly-CSharp
+            m_MethodName: Yeeee
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 0
-    dialogueText: here is 1
+    dialogueText: How are you?
     responses:
     - type: 0
-      label: next
+      label: I'm good, you?
       target: 0
-    label: 
-    label2: 
-    target: 0
-    target2: 0
+      clickedEvent:
+        m_PersistentCalls:
+          m_Calls: []
   - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
     expression: 0
-    dialogueText: here is 2
-    responses:
-    - type: 0
-      label: next
-      target: 0
-    label: 
-    label2: 
-    target: 0
-    target2: 0
-  - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
-    expression: 3
-    dialogueText: this is the end 3
+    dialogueText: 'I''m great!
+
+      Anyway I gotta go shopping now, bye!'
     responses:
     - type: 1
-      label: finish
+      label: Bye
       target: 0
-    label: 
-    label2: 
-    target: 0
-    target2: 0
+      clickedEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - person: {fileID: 11400000, guid: cbb7ae5f155804c4b9bfaf336e980ecf, type: 2}
+    expression: 3
+    dialogueText: Fine! Not like I care!
+    responses:
+    - type: 1
+      label: '*Leave*'
+      target: 0
+      clickedEvent:
+        m_PersistentCalls:
+          m_Calls: []
