@@ -71,7 +71,7 @@ namespace BigBoi
             int targetNumber = Random.Range(0, orderedList.Count - 1); //get random index from array
             targetNumber = orderedList[targetNumber]; //get number at that random index
 
-            targetIndex = SearchingAlgorithms.BinarySearch<int>(orderedList, targetNumber, new CompareInts()); //use binary search
+            //targetIndex = SearchingAlgorithms.BinarySearch<int>(orderedList, targetNumber, new CompareInts()); //use binary search
 
             //set up array string for display
             string arrayText = "";
