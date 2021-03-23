@@ -19,21 +19,23 @@ namespace BigBoi
 
         public void CountingSortButton()
         {
-            List<int> firstArray = new List<int>();
+            List<MyObject> intList = new List<MyObject>();
             string firstArrayText = "";
             for (int i = 0; i < 20; i++)
             {
-                firstArray.Add( Random.Range(10, 30));
-                firstArrayText += (firstArray[i].ToString() + ", ");
+                MyObject newObject=new MyObject();
+                newObject.value = Random.Range(10, 30);
+                intList.Add(newObject);
+                firstArrayText += (intList[i].GetValue().ToString() + ", ");
             }
 
-            //do ints extend IComparable???
-            firstArray.CountingSort();
+            SortingAlgorithms.CountingSort(intList);
+            
 
             string endArrayText = "";
-            for (int i = 0; i < firstArray.Count; i++)
+            for (int i = 0; i < intList.Count; i++)
             {
-                endArrayText += (firstArray[i].ToString() + ", ");
+                endArrayText += (intList[i].GetValue().ToString() + ", ");
             }
 
             consoleBox.text = "The generated array is:\n" + firstArrayText + "\n\nUsing Counting Sort Algorithm gives this new array:\n" + endArrayText;

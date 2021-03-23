@@ -5,65 +5,59 @@ namespace BigBoi
 {
     public static class SortingAlgorithms
     {
-        public static void CountingSort<T>(this List<T> _list) where T : IComparable
+        public static void CountingSort<T>(this List<T> _list) where T : IValue
         {
-            List<T> newArray = new List<T>(); //new array of same length
+            //
+            List<T> newList=new List<T>();
+
 
             //set min and max values to the first integer
-            IComparable min = _list[0];
-            IComparable max = _list[0];
+            int min = _list[0].GetValue();
+            int max = _list[0].GetValue();
 
             //find actual min and max values
             for (int i = 0; i < _list.Count; i++) //go through given array
             {
-                int comparison = min.CompareTo(_list[i]);
-
-                if (comparison < 0) //if this integer is smaller than min
+                if (_list[i].GetValue() < min) //if this integer is smaller than min
                 {
-                    min = _list[i]; //set min to this integer
+                    min = _list[i].GetValue(); //set min to this integer
                 }
-                else if (comparison > 0) //if this integer is bigger than max
+                else if (_list[i].GetValue() > max) //if this integer is bigger than max
                 {
-                    max = _list[i]; //set max to this integer
+                    max = _list[i].GetValue(); //set max to this integer
                 }
             }
 
-            //array for recording frequency of each unique value
-            List<int> countOfValues = new List<int>(); //length of array is range of values + 1
+            //new empty list
+            List<int> valueCount = new List<int>();
 
-            for (int i = 0; i < _list.Count; i++) //go through given array again
+            //correct length
+            for (int i = 0; i < (max-min); i++)
             {
-                // _array[i]-min is the index in the frequency counting array that _array[i] belongs at
-                //this is for finding duplicate values
-                //countOfValues[_list[i] - min]++; //add to the count of this index
-
-                //if
-
-                if (countOfValues.Contains(_list[i].CompareTo(min)))
-                {
-                    countOfValues[i]++;
-                }
-                else
-                {
-                    countOfValues.Add(i);
-                }
+                valueCount.Add(0);
             }
 
-            countOfValues[0]--; //not sure what this line is all about
-
-            for (int i = 1; i < countOfValues.Count; i++) //go through frequencies array
+            int temp = 0;
+            //add values as is
+            for (int i = 0; i < _list.Count; i++)
             {
-                countOfValues[i] = countOfValues[i] + countOfValues[i - 1]; //add up the values that come earlier in the array
+                valueCount[_list[i].GetValue()]++;
             }
 
-            for (int i = _list.Count - 1; i >= 0; i--) //count down from the last index of the original array
+            //add values together
+            for (int i = 1; i < valueCount.Count; i++)
             {
-                //ima be honest I don't understand what this line does
-                newArray[countOfValues[_list[i].CompareTo(min)]--] = _list[i];
+                valueCount[i] += valueCount[i - 1];
             }
 
-            
+            //assign to new list
+            foreach (T item in _list)
+            {
+                newList[valueCount[item.GetValue()]] = item;
+                valueCount[item.GetValue()]--;
+            }
 
+            _list = newList;
         }
 
 

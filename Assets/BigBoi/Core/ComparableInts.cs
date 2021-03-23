@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ComparableInts : IComparable
 {
+    int value;
     public int CompareTo(object obj)
     {
-        ComparableInts inty = obj as ComparableInts;
+        ComparableInts a = obj as ComparableInts;
 
-        return 1;
-
-
+        return value-a.value;
 
     }
 
-
+    public ComparableInts(int _int)
+    {
+        value = _int;
+    }
 }
