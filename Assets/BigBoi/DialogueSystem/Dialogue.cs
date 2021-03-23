@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BigBoi.DialogueSystem
@@ -21,6 +22,6 @@ namespace BigBoi.DialogueSystem
         /// </summary>
         /// <param name="_line">line to locate</param>
         /// <returns>index of passed line</returns>
-        public int LineIndex(Line _line) => SearchingAlgorithms.LinearSearch(lines, _line);
+        public int LineIndex(Line _line) => SearchingAlgorithms.LinearSearchClass(new List<Line>(), _line); //fix this list in a sec
     }
 }

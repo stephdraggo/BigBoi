@@ -11,11 +11,29 @@ namespace BigBoi
         /// Find the index of an object in a given array
         /// </summary>
         /// <returns>index of target in array</returns>
-        public static int LinearSearch<T>(T[] _array, T _target)
+        public static int LinearSearchClass<T>(List<T> _list, T _target) where T: class
         {
-            for (int i = 0; i < _array.Length; i++) //go through array
+            for (int i = 0; i < _list.Count; i++) //go through array
             {
-                if (_array[i].Equals(_target)) //check each item if the target item
+                if (_list[i]==_target) //check each item if the target item
+                {
+                    return i; //end method and return index
+                }
+            }
+
+            //if target object does not exist in this array
+            Debug.LogError("Target not found in the passed array. Returning 0.");
+            return 0;
+        }
+        /// <summary>
+        /// Find the index of an object in a given array
+        /// </summary>
+        /// <returns>index of target in array</returns>
+        public static int LinearSearchObject<T>(List<T> _list, T _target) where T: UnityEngine.Object
+        {
+            for (int i = 0; i < _list.Count; i++) //go through array
+            {
+                if (_list[i]==_target) //check each item if the target item
                 {
                     return i; //end method and return index
                 }

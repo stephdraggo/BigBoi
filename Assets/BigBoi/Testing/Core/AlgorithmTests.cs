@@ -10,56 +10,57 @@ namespace BigBoi
         [SerializeField] private Text consoleBox;
         [SerializeField] private List<GameObject> objectList;
 
+        List<MyObject> list = new List<MyObject>();
         private List<MyObject> orderedList;
+        string generatedListText = "";
 
         private void Start()
         {
             orderedList = new List<MyObject>(); //make it exist
         }
 
-        public void CountingSortButton()
+        public void GenerateListButton()
         {
-            List<MyObject> intList = new List<MyObject>();
-            string generatedListText = "";
             for (int i = 0; i < 20; i++)
             {
                 MyObject newObject = new MyObject();
                 newObject.value = Random.Range(10, 30);
-                intList.Add(newObject);
-                generatedListText += (intList[i].GetValue().ToString() + ", ");
+                list.Add(newObject);
+                generatedListText += (list[i].GetValue().ToString() + ", ");
             }
 
-            intList = SortingAlgorithms.CountingSort(intList);
-
-
-            string sortedListText = "";
-            for (int i = 0; i < intList.Count; i++)
-            {
-                sortedListText += (intList[i].GetValue().ToString() + ", ");
-            }
-
-            consoleBox.text = "The generated list is:\n" + generatedListText + "\n\nUsing Counting Sort Algorithm gives this new list:\n" + sortedListText;
-
-            orderedList = intList;
+            consoleBox.text = "The randomly generated list is:\n" + generatedListText;
         }
 
-        //public void LinearSearchButton()
-        //{
-        //    if (objectList.Count <= 0) //check that there is an array to search through
-        //    {
-        //        consoleBox.text = "You must fill the object array in inspector before using linear search";
-        //        return;
-        //    }
+        public void CountingSortButton()
+        {
+            list = SortingAlgorithms.CountingSort(list);
 
-        //    int index = Random.Range(0, objectList.Count - 1); //get random index
-        //    GameObject target = objectList[index]; //get object at that position
-        //    index = -1; //remove saved index
+            string sortedListText = "";
+            for (int i = 0; i < list.Count; i++)
+            {
+                sortedListText += (list[i].GetValue().ToString() + ", ");
+            }
 
-        //    index = SearchingAlgorithms.LinearSearch(objectList, target); //use linear search
+            consoleBox.text = "The randomly generated list is:\n" + generatedListText + "\n\nUsing Counting Sort Algorithm gives this new list:\n" + sortedListText;
 
-        //    consoleBox.text = string.Format("Searching for object: {0} in array shown in inspector.\n\nObject {0} is at position {1} in the array."
-        //        , target.name, index.ToString());
-        //}
+            orderedList = list;
+        }
+
+        public void LinearSearchButton()
+        {
+
+            int index = Random.Range(0, list.Count - 1); //get random index
+            MyObject target = list[index]; //get object at that position
+            index = -1; //remove saved index
+
+            index = SearchingAlgorithms.LinearSearchClass(list, target); //use linear search
+
+            consoleBox.text = string.Format("Searching for object: {0} in list:\n{1}\n\nObject {0} is at position {2} in the array."
+                , target.GetValue().ToString(),generatedListText, index.ToString());
+
+
+        }
 
         public void BinarySearchButton()
         {
