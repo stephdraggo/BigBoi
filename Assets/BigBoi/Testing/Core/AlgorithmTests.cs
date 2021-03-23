@@ -8,7 +8,6 @@ namespace BigBoi
     public class AlgorithmTests : MonoBehaviour
     {
         [SerializeField] private Text consoleBox;
-        [SerializeField] private List<GameObject> objectList;
 
         List<MyObject> list = new List<MyObject>();
         private List<MyObject> orderedList;
