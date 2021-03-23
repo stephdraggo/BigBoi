@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyObject : MonoBehaviour,IValue,IComparable
+public class MyObject : MonoBehaviour, IValue, IComparable
 {
     public int value;
 
@@ -13,12 +13,12 @@ public class MyObject : MonoBehaviour,IValue,IComparable
             throw new NullReferenceException("No object to compare.");
         }
 
-        MyObject otherObj = obj as MyObject;
-
-        if (otherObj != null)
+        if (obj is MyObject)
         {
-            if (value > otherObj.value) return 1;
-            if (value < otherObj.value) return -1;
+            MyObject otherObj = obj as MyObject;
+            int otherValue = otherObj.GetValue();
+            if (value > otherValue) return 1;
+            if (value < otherValue) return -1;
             return 0;
         }
 
@@ -28,17 +28,5 @@ public class MyObject : MonoBehaviour,IValue,IComparable
     public int GetValue()
     {
         return value;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

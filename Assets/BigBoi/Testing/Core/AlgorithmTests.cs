@@ -10,35 +10,37 @@ namespace BigBoi
         [SerializeField] private Text consoleBox;
         [SerializeField] private List<GameObject> objectList;
 
-        private List<int> orderedList;
+        private List<MyObject> orderedList;
 
         private void Start()
         {
-            orderedList = new List<int>(); //make it exist
+            orderedList = new List<MyObject>(); //make it exist
         }
 
         public void CountingSortButton()
         {
             List<MyObject> intList = new List<MyObject>();
-            string firstArrayText = "";
+            string generatedListText = "";
             for (int i = 0; i < 20; i++)
             {
-                MyObject newObject=new MyObject();
+                MyObject newObject = new MyObject();
                 newObject.value = Random.Range(10, 30);
                 intList.Add(newObject);
-                firstArrayText += (intList[i].GetValue().ToString() + ", ");
+                generatedListText += (intList[i].GetValue().ToString() + ", ");
             }
 
-            SortingAlgorithms.CountingSort(intList);
-            
+            intList = SortingAlgorithms.CountingSort(intList);
 
-            string endArrayText = "";
+
+            string sortedListText = "";
             for (int i = 0; i < intList.Count; i++)
             {
-                endArrayText += (intList[i].GetValue().ToString() + ", ");
+                sortedListText += (intList[i].GetValue().ToString() + ", ");
             }
 
-            consoleBox.text = "The generated array is:\n" + firstArrayText + "\n\nUsing Counting Sort Algorithm gives this new array:\n" + endArrayText;
+            consoleBox.text = "The generated list is:\n" + generatedListText + "\n\nUsing Counting Sort Algorithm gives this new list:\n" + sortedListText;
+
+            orderedList = intList;
         }
 
         //public void LinearSearchButton()
@@ -68,22 +70,21 @@ namespace BigBoi
             }
 
             int targetIndex = -1; //set target index out of bounds
-            int targetNumber = Random.Range(0, orderedList.Count - 1); //get random index from array
-            targetNumber = orderedList[targetNumber]; //get number at that random index
+            MyObject targetObject = orderedList[Random.Range(0, orderedList.Count - 1)]; //get random object from list
 
-            //targetIndex = SearchingAlgorithms.BinarySearch<int>(orderedList, targetNumber, new CompareInts()); //use binary search
+            targetIndex = SearchingAlgorithms.BinarySearch(orderedList, targetObject); //use binary search
 
             //set up array string for display
-            string arrayText = "";
+            string listText = "";
             for (int i = 0; i < orderedList.Count; i++)
             {
-                arrayText += (orderedList[i].ToString() + ", ");
+                listText += (orderedList[i].GetValue().ToString() + ", ");
             }
 
             //display result
-            consoleBox.text = string.Format("Searching for integer: {0} in this ordered array:\n{1}\n" +
+            consoleBox.text = string.Format("Searching for integer: {0} in this ordered list:\n{1}\n" +
                 "\n{0} is at index {2} of the ordered array",
-                targetNumber.ToString(), arrayText, targetIndex.ToString());
+                targetObject.GetValue().ToString(), listText, targetIndex.ToString());
         }
     }
 }

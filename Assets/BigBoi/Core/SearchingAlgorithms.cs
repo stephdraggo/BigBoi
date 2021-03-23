@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ namespace BigBoi
         /// <param name="_target">target object</param>
         /// <param name="_comparer">compare type</param>
         /// <returns></returns>
-        public static int BinarySearch<T>(List<T> _list, T _target, IComparer<T> _comparer)
+        public static int BinarySearch<T>(List<T> _list, T _target) where T:IComparable
         {
             //declare variables
             int lowIndex = 0;
@@ -44,7 +45,7 @@ namespace BigBoi
             {
                 midPoint = (lowIndex + highIndex) / 2; //set/reset midpoint
 
-                int comparison = _comparer.Compare(_list[midPoint], _target); //here is the comparer, James
+                int comparison = _list[midPoint].CompareTo( _target); //comparing time
 
                 if (comparison > 0) //if comparison is positive
                 {

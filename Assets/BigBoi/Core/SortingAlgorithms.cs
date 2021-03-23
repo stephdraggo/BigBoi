@@ -13,11 +13,10 @@ namespace BigBoi
         /// </summary>
         /// <typeparam name="T">generic object that implements IValue</typeparam>
         /// <param name="_list">list of generic objects T</param>
-        public static void CountingSort<T>(this List<T> _list) where T : IValue
+        public static List<T> CountingSort<T>(this List<T> _list) where T : IValue
         {
-            //
+            //temporary storage list
             List<T> newList = new List<T>();
-
 
             //set min and max values to the first integer
             int min = _list[0].GetValue();
@@ -72,7 +71,7 @@ namespace BigBoi
             }
 
             //give list pls
-            _list = newList;
+            return newList;
         }
 
     }
