@@ -12,6 +12,7 @@ namespace BigBoi
         List<MyObject> list = new List<MyObject>();
         private List<MyObject> orderedList;
         string generatedListText = "";
+        string sortedListText = "";
 
         private void Start()
         {
@@ -35,7 +36,6 @@ namespace BigBoi
         {
             list = SortingAlgorithms.CountingSort(list);
 
-            string sortedListText = "";
             for (int i = 0; i < list.Count; i++)
             {
                 sortedListText += (list[i].GetValue().ToString() + ", ");
@@ -56,7 +56,7 @@ namespace BigBoi
             index = SearchingAlgorithms.LinearSearchClass(list, target); //use linear search
 
             consoleBox.text = string.Format("Searching for object: {0} in list:\n{1}\n\nObject {0} is at position {2} in the array."
-                , target.GetValue().ToString(),generatedListText, index.ToString());
+                , target.GetValue().ToString(),sortedListText, index.ToString());
 
 
         }
@@ -74,17 +74,11 @@ namespace BigBoi
 
             targetIndex = SearchingAlgorithms.BinarySearch(orderedList, targetObject); //use binary search
 
-            //set up array string for display
-            string listText = "";
-            for (int i = 0; i < orderedList.Count; i++)
-            {
-                listText += (orderedList[i].GetValue().ToString() + ", ");
-            }
 
             //display result
             consoleBox.text = string.Format("Searching for integer: {0} in this ordered list:\n{1}\n" +
                 "\n{0} is at index {2} of the ordered array",
-                targetObject.GetValue().ToString(), listText, targetIndex.ToString());
+                targetObject.GetValue().ToString(), sortedListText, targetIndex.ToString());
         }
     }
 }
