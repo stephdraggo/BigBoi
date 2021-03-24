@@ -3092,7 +3092,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleBox: {fileID: 606614797}
-  objectList: []
 --- !u!114 &1580349553
 MonoBehaviour:
   m_ObjectHideFlags: 0
