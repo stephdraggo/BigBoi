@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.AnimatedValues;
 
 namespace BigBoi.DialogueSystem
 {
@@ -41,7 +40,7 @@ namespace BigBoi.DialogueSystem
         private void RenderProperty(SerializedProperty _property, ref Rect _pos)
         {
             EditorGUI.PropertyField(_pos, _property);
-            
+
             _pos.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
         }
 
@@ -50,50 +49,7 @@ namespace BigBoi.DialogueSystem
             SerializedProperty pType = _property.FindPropertyRelative("type");
             SerializedProperty pClickEvent = _property.FindPropertyRelative("clickedEvent");
 
-            return EditorGUI.GetPropertyHeight(pClickEvent) +(EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) * (IsJumpTo(pType) ? 3 : 2);
+            return EditorGUI.GetPropertyHeight(pClickEvent) + (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) * (IsJumpTo(pType) ? 3 : 2);
         }
-
-        //private ActionButton actionButton;
-
-        //private SerializedProperty pType, pLabel, pTarget;
-
-        //private AnimBool responseIsChoice = new AnimBool();
-
-        //private void OnEnable()
-        //{
-        //    actionButton = target as ActionButton;
-
-        //    pType = serializedObject.FindProperty("type");
-        //    pLabel = serializedObject.FindProperty("label");
-        //    pTarget = serializedObject.FindProperty("target");
-
-        //    responseIsChoice.value = (actionButton.Type == ActionTypes.JumpTo); //align bool to specific response type
-        //    responseIsChoice.valueChanged.AddListener(Repaint); //add repaint method to this bool
-        //}
-
-        //public override void OnInspectorGUI()
-        //{
-        //    serializedObject.Update();
-
-        //    EditorGUILayout.BeginVertical(GUI.skin.box); : 
-        //    {
-        //        EditorGUILayout.LabelField("Details for response buttons.");
-        //        EditorGUI.indentLevel++;
-        //        EditorGUILayout.PropertyField(pType);
-        //        EditorGUILayout.PropertyField(pLabel);
-
-        //        responseIsChoice.target = (actionButton.Type == ActionTypes.JumpTo);
-        //        EditorGUILayout.BeginFadeGroup(responseIsChoice.faded);
-        //        {
-        //            EditorGUILayout.PropertyField(pTarget);
-        //        }
-        //        EditorGUILayout.EndFadeGroup();
-
-        //        EditorGUI.indentLevel--;
-        //    }
-        //    EditorGUILayout.EndVertical();
-
-        //    serializedObject.ApplyModifiedProperties();
-        //}
     }
 }

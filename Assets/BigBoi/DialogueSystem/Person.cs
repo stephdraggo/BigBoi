@@ -23,19 +23,29 @@ namespace BigBoi.DialogueSystem
         [Tooltip("If the player can see this character. Displays face sprite, otherwise displays 'unknown face' from the manager.")]
         public bool seen;
 
+        //Alias here
+        [SerializeField]
+        private bool hasAlias;
+
+        [SerializeField]
+        private string[] alias;
+
+
         /// <summary>
         /// Returns name of character/object if "known" is true, else returns "???"
+        /// Allows getting a specific alias instead
         /// </summary>
-        public string Name
+        public string Name(int _alias = -1)
         {
-            get
+            if (known)
             {
-                if (known)
+                if (hasAlias && alias.Length > 0 && _alias >= 0 && _alias < alias.Length)
                 {
-                    return name;
+                    return alias[_alias];
                 }
-                return "???";
+                return name;
             }
+            return "???";
         }
 
         /// <summary>

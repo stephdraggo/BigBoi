@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using BigBoi;
 
 namespace BigBoi.DialogueSystem
 {
@@ -10,6 +12,16 @@ namespace BigBoi.DialogueSystem
     [CreateAssetMenu(menuName = "BigBoi/Dialogue System/Dialogue", fileName = "new dialogue")]
     public class Dialogue : ScriptableObject
     {
+        [SerializeField, Tooltip("Edit visibility of people. Dragging a person object into this set is not necessary for them to be part of this dialogue.")]
+        private People[] people;
+
+        [Serializable]
+        public class People
+        {
+            public Person person;
+
+        }
+
         /// <summary>
         /// Array of dialogue lines.
         /// </summary>
@@ -22,6 +34,6 @@ namespace BigBoi.DialogueSystem
         /// </summary>
         /// <param name="_line">line to locate</param>
         /// <returns>index of passed line</returns>
-        public int LineIndex(Line _line) => SearchingAlgorithms.LinearSearchClass(new List<Line>(), _line); //fix this list in a sec
+        public int LineIndex(Line _line) => SearchingAlgorithms.LinearSearchClass(Conversions.ArrayToList(lines), _line);
     }
 }

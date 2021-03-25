@@ -46,7 +46,7 @@ namespace BigBoi.DialogueSystem
         public void UpdateUI()
         {
             Manager.instance.CanvasParts.faceCam.sprite = person.Picture(Expression);
-            Manager.instance.CanvasParts.nameText.text = person.Name;
+            Manager.instance.CanvasParts.nameText.text = person.Name();
             Manager.instance.CanvasParts.dialogueText.text = DialogueText;
 
             foreach (ActionButton _response in responses)

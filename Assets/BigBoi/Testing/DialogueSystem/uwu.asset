@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   known: 1
   seen: 1
+  hasAlias: 1
+  alias:
+  - Sara
   pictures:
     neutral: {fileID: 2126855429301889030, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
     happy: {fileID: -3097651239445170847, guid: 6cf07ab768eb00d44aa788701e8c0596, type: 3}
