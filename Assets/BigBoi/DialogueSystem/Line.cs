@@ -9,7 +9,7 @@ namespace BigBoi.DialogueSystem
     /// Person speaking, which expression to display for that person, the text of the dialogue, and possible actions to take in this line of dialogue.
     /// </summary>
     [Serializable]
-    public class Line
+    public class Line : IComparable
     {
         /// <summary>
         /// Reference to person speaking for access to display name and sprite.
@@ -53,6 +53,15 @@ namespace BigBoi.DialogueSystem
             {
                 Manager.instance.AddButtons(_response, this);
             }
+        }
+
+        public int CompareTo(object _obj)
+        {
+            if (_obj == this)
+            {
+                return 0;
+            }
+            return 1;
         }
     }
 }

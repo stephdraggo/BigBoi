@@ -34,6 +34,6 @@ namespace BigBoi.DialogueSystem
         /// </summary>
         /// <param name="_line">line to locate</param>
         /// <returns>index of passed line</returns>
-        public int LineIndex(Line _line) => SearchingAlgorithms.LinearSearchClass(Conversions.ArrayToList(lines), _line);
+        public int LineIndex(Line _line) => _line.LinearSearch(lines.ToList());
     }
 }
