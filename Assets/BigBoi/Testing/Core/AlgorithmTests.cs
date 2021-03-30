@@ -6,12 +6,12 @@ namespace BigBoi
 {
     public class AlgorithmTests : MonoBehaviour
     {
-        [SerializeField] private Text consoleBox;
+        [SerializeField, Tooltip("Connect to text display output.")] private Text consoleBox;
 
-        List<MyObject> unsortedList = new List<MyObject>();
-        private List<MyObject> sortedList = new List<MyObject>();
-        string unsortedListText = "";
-        string sortedListText = "";
+        private List<MyClass> unsortedList = new List<MyClass>();
+        private List<MyClass> sortedList = new List<MyClass>();
+        private string unsortedListText = "";
+        private string sortedListText = "";
 
         #region Button Methods
         public void GenerateListButton()
@@ -21,10 +21,10 @@ namespace BigBoi
 
             for (int i = 0; i < 20; i++)
             {
-                MyObject newObject = new MyObject();
+                MyClass newObject = new MyClass();
                 newObject.value = Random.Range(10, 30);
                 unsortedList.Add(newObject);
-                unsortedListText += (unsortedList[i].GetValue().ToString() + ", ");
+                unsortedListText += (newObject.GetValue().ToString() + ", ");
             }
 
             consoleBox.text = "The randomly generated list is:\n" + unsortedListText;
@@ -60,7 +60,7 @@ namespace BigBoi
 
         public void LinearSearchButton()
         {
-            MyObject target = unsortedList[Random.Range(0, unsortedList.Count - 1)]; //get object at that position
+            MyClass target = unsortedList[Random.Range(0, unsortedList.Count - 1)]; //get object at that position
 
             int index = target.LinearSearch(unsortedList); //use linear search
 
@@ -76,7 +76,7 @@ namespace BigBoi
                 return;
             }
 
-            MyObject targetObject = sortedList[Random.Range(0, sortedList.Count - 1)]; //get random object from list
+            MyClass targetObject = sortedList[Random.Range(0, sortedList.Count - 1)]; //get random object from list
 
             int targetIndex = targetObject.BinarySearch(sortedList); //get index with binary search
 

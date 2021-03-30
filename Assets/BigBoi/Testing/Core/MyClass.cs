@@ -1,21 +1,20 @@
 using System;
 using UnityEngine;
 
-public class MyObject : MonoBehaviour, IValue, IComparable
+public class MyClass : MonoBehaviour, IValue, IComparable
 {
     public int value;
 
-    public int CompareTo(object obj)
+    public int CompareTo(object _obj)
     {
-        if (obj == null)
+        if (_obj == null) //check if there is something to compare
         {
             throw new NullReferenceException("No object to compare.");
         }
 
-        if (obj is MyObject)
+        if (_obj is MyClass) //check if comparable type
         {
-            MyObject otherObj = obj as MyObject;
-            int otherValue = otherObj.GetValue();
+            int otherValue = (_obj as MyClass).GetValue();
             if (value > otherValue) return 1;
             if (value < otherValue) return -1;
             return 0;

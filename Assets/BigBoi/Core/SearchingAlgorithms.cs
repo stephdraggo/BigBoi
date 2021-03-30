@@ -22,7 +22,7 @@ namespace BigBoi
             }
 
             //if target object does not exist in this array
-            Debug.LogError("Target not found in the passed array. Returning -1.");
+            Debug.LogError("Target not found in the passed list. Returning -1.");
             return -1;
         }
         #endregion
@@ -30,12 +30,8 @@ namespace BigBoi
         #region Binary Search
         /// <summary>
         /// Searches through list of objects for a specific object and returns index
+        /// T must extend IComparable.
         /// </summary>
-        /// <typeparam name="T">object type</typeparam>
-        /// <param name="_list">list of objects</param>
-        /// <param name="_target">target object</param>
-        /// <param name="_comparer">compare type</param>
-        /// <returns></returns>
         public static int BinarySearch<T>(this T _target, List<T> _list) where T : IComparable
         {
             //declare variables
@@ -64,8 +60,8 @@ namespace BigBoi
             }
 
             //if target object does not exist in this array
-            Debug.LogError("Target not found in the passed array. Returning 0.");
-            return 0;
+            Debug.LogError("Target not found in the passed list. Returning -1.");
+            return -1;
         }
         #endregion
     }
