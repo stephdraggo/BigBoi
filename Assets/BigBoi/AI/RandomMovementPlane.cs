@@ -13,14 +13,13 @@ namespace BigBoi.AI
         private List<BasicMovement> entities;
 
         [SerializeField, Min(0.01f), Tooltip("The distance where the entity is 'close enough' to its target that it should choose a new target.")]
-        private float distance;
+        private float distanceRange;
 
-        [SerializeField, Tooltip("Is 3D movement allowed?")]
+        [SerializeField, Tooltip("Is vertical movement allowed?")]
         private bool yMovement;
 
         private MeshRenderer mesh;
         private float minX, maxX, minY, maxY, minZ, maxZ;
-        private Vector3 target;
 
 
         void Start()
@@ -32,14 +31,14 @@ namespace BigBoi.AI
                 float xSize = mesh.bounds.size.x * 0.5f;
                 float ySize = mesh.bounds.size.y * 0.5f;
                 float zSize = mesh.bounds.size.z * 0.5f;
-                minX = offset.x - xSize;
-                maxX = offset.x + xSize;
-                minY = offset.y - ySize;
-                maxY = offset.y + ySize;
-                minZ = offset.z - zSize;
-                maxZ = offset.z + zSize;
+                minX = (offset.x - xSize)*transform.localScale.x;
+                maxX = (offset.x + xSize)*transform.localScale.x;
+                minY = (offset.y - ySize)*transform.localScale.y;
+                maxY = (offset.y + ySize)*transform.localScale.y;
+                minZ = (offset.z - zSize)*transform.localScale.z;
+                maxZ = (offset.z + zSize)*transform.localScale.z;
 
-                if (minX == maxX && minZ == maxZ && minY == maxY)
+                if (minX == maxX && minY == maxY && minZ == maxZ)
                 {
                     Debug.LogError("Mesh renderer lacks required size. Min and max bounds values should not be equal.");
                     enabled = false;
@@ -70,11 +69,27 @@ namespace BigBoi.AI
         {
             foreach (BasicMovement _entity in entities)
             {
-                float xDistance = _entity.transform.position.x - target.x;
-                float zDistance = _entity.transform.position.z - target.z;
-                if ((xDistance + zDistance) < distance) //is close enough to target?
+                float distance = _entity.transform.position.x - _entity.Target.x;
+                distance += _entity.transform.position.z - _entity.Target.z;
+                if (yMovement)
                 {
-
+                    distance += _entity.transform.position.y - _entity.Target.y;
+                }
+                if (distance < distanceRange) //is close enough to target?
+                {
+                    //generate new random target within area bounds
+                    float xTarget = Random.Range(minX, maxX);
+                    float yTarget;
+                    float zTarget = Random.Range(minZ, maxZ);
+                    if (yMovement)
+                    {
+                        yTarget = Random.Range(minY, maxY);
+                    }
+                    else
+                    {
+                        yTarget = _entity.Target.y;
+                    }
+                    _entity.ChangeTarget(new Vector3(xTarget, yTarget, zTarget));
                 }
             }
         }
