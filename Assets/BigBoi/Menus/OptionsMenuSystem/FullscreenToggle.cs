@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BigBoi.OptionsSystem
+namespace BigBoi.Menus.OptionsMenuSystem
 {
     [AddComponentMenu("BigBoi/Options Menu System/Fullscreen Toggle")]
     [RequireComponent(typeof(Toggle))]

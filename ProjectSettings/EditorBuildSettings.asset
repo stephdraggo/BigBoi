@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BigBoi/Testing/OptionsMenu/OptionsMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/BigBoi/Testing/Menus/MenuTest.unity
+    guid: e2785d961c0f6d247aa9104fb1059166
   m_configObjects: {}

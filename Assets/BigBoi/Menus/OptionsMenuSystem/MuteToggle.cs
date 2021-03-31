@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using NullReEx = System.NullReferenceException;
 
-namespace BigBoi.OptionsSystem
+namespace BigBoi.Menus.OptionsMenuSystem
 {
     [AddComponentMenu("BigBoi/Options Menu System/Mute Toggle")]
     [RequireComponent(typeof(Toggle))]

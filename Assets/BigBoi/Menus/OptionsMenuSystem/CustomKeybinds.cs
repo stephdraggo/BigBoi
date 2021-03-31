@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BigBoi.OptionsSystem
+namespace BigBoi.Menus.OptionsMenuSystem
 {
     [AddComponentMenu("BigBoi/Options Menu System/Custom Keybinds")]
     public class CustomKeybinds : MonoBehaviour

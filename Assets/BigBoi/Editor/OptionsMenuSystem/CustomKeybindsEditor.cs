@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 
-namespace BigBoi.OptionsSystem
+namespace BigBoi.Menus.OptionsMenuSystem
 {
     [CustomEditor(typeof(CustomKeybinds))]
     public class CustomKeybindsEditor : Editor

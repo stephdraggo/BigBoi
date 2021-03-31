@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using NullReEx = System.NullReferenceException;
 
-namespace BigBoi.OptionsSystem
+namespace BigBoi.Menus.OptionsMenuSystem
 {
     [AddComponentMenu("BigBoi/Options Menu System/Volume Slider")]
     [RequireComponent(typeof(Slider))]
