@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace BigBoi.Menus
 {
-    [AddComponentMenu("BigBoi/Menu System/Methods/Enable Panel by Type")]
+    [AddComponentMenu("BigBoi/Menu System/Methods/Enable Panel by Index")]
     [RequireComponent(typeof(Button))]
     public class EnablePanelByIndex : MonoBehaviour
     {
