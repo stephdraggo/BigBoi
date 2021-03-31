@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace BigBoi.Menus
 {
+    /// <summary>
+    /// Inherits all functionality from the base menu class and adds a key to bring up the pause menu.
+    /// </summary>
     [AddComponentMenu("BigBoi/Menu System/Managers/GameScene Menu Manager")]
     public class GameSceneMenuManager : BaseMenuManager
     {
