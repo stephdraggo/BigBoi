@@ -6,21 +6,68 @@ namespace BigBoi.AI
 {
     /// <summary>
     /// Basic movement class which moves an object using transform.position linearly towards its target.
+    /// Implemented variations on randomising speed.
     /// </summary>
-    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Basic")]
+    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Basic Movement")]
     public class BasicMovement : MonoBehaviour
     {
-        private Vector3 target;
+        protected Vector3 target;
         /// <summary>
         /// Entity currently moves towards this position.
         /// </summary>
         public Vector3 Target => target;
 
-        [SerializeField,Tooltip("Speed multiplier for this entity.")]
-        private float speed;
+        #region Speed Variables
+        [SerializeField, Tooltip("Speed multiplier for this entity.")]
+        protected float speed;
 
-        void Update()
+        [SerializeField, Tooltip("Randomise speed?")]
+        protected bool randomiseSpeed = false;
+
+        [SerializeField, Tooltip("Range of random speed.")]
+        protected Vector2 range;
+
+        [SerializeField, Tooltip("When should speed be randomly set?")]
+        protected SpeedChangeWhen speedChange;
+
+        [SerializeField, Tooltip("Timed interval for changing speed.")]
+        protected float interval;
+        protected float timer;
+
+        public enum SpeedChangeWhen
         {
+            OnStartOnly,
+            OnTargetChange,
+            OnTimedInterval,
+        }
+        #endregion
+
+
+
+
+        protected void Start()
+        {
+            if (randomiseSpeed)
+            {
+                if (speedChange == SpeedChangeWhen.OnStartOnly)
+                {
+                    speed = Random.Range(range.x, range.y);
+                }
+                timer = 0;
+            }
+        }
+
+        protected void Update()
+        {
+            if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTimedInterval)
+            {
+                if (timer >= interval)
+                {
+                    speed = Random.Range(range.x, range.y);
+                    timer = 0;
+                }
+                else timer += Time.deltaTime;
+            }
             Move();
         }
 
@@ -30,6 +77,11 @@ namespace BigBoi.AI
         public void ChangeTarget(Vector3 _target)
         {
             target = _target;
+
+            if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTargetChange)
+            {
+                speed = Random.Range(range.x, range.y);
+            }
         }
 
         /// <summary>
@@ -49,5 +101,7 @@ namespace BigBoi.AI
         {
             transform.position += Direction() * Time.deltaTime * speed;
         }
+
+
     }
 }

@@ -14,19 +14,17 @@ namespace BigBoi.AI
     [RequireComponent(typeof(MeshRenderer))]
     public class RandomMovementFreeRange : MonoBehaviour
     {
-
         [SerializeField, Tooltip("The entities that will move around in this space.")]
         private List<BasicMovement> entities;
 
-        [SerializeField, Min(0.01f), Tooltip("The distance where the entity is 'close enough' to its target that it should choose a new target.")]
+        [SerializeField, Min(0.01f), Tooltip("The distance where the entity is 'close enough' to its target that it should choose a new target.\nIf the entites appear to jitter at points, increase this value or decrease the speed of the entities.")]
         private float distanceRange;
 
-        [SerializeField, Tooltip("Is vertical movement allowed?")]
+        [SerializeField, Tooltip("Is vertical movement allowed? If not, the entities will keep their current y coordinate.")]
         private bool yMovement;
 
         private MeshRenderer mesh;
-        private float minX, maxX, minY, maxY, minZ, maxZ;
-
+        private Vector2 xBound, yBound, zBound;
 
         void Start()
         {
@@ -34,19 +32,19 @@ namespace BigBoi.AI
             if (TryGetComponent(out mesh)) //check if there is a mesh renderer
             {
                 Vector3 offset = mesh.bounds.center;
-                float xSize = mesh.bounds.size.x * 0.5f;
-                float ySize = mesh.bounds.size.y * 0.5f;
-                float zSize = mesh.bounds.size.z * 0.5f;
-                minX = offset.x - xSize;
-                maxX = offset.x + xSize;
-                minY = offset.y - ySize;
-                maxY = offset.y + ySize;
-                minZ = offset.z - zSize;
-                maxZ = offset.z + zSize;
 
-                if (minX == maxX && minY == maxY && minZ == maxZ)
+                float xSize = mesh.bounds.size.x * 0.5f;
+                xBound = new Vector2(offset.x - xSize, offset.x + xSize);
+
+                float ySize = mesh.bounds.size.y * 0.5f;
+                yBound = new Vector2(offset.y - ySize, offset.y + ySize);
+
+                float zSize = mesh.bounds.size.z * 0.5f;
+                zBound = new Vector2(offset.z - zSize, offset.z + zSize);
+
+                if (xBound.x == xBound.y && yBound.x == yBound.y && zBound.x == zBound.y)
                 {
-                    Debug.LogError("Mesh renderer lacks required size. Min and max bounds values should not be equal.");
+                    Debug.LogError("Mesh renderer lacks size. Min and max bounds values should not be zero.");
                     enabled = false;
                     return;
                 }
@@ -86,12 +84,12 @@ namespace BigBoi.AI
                 if (Mathf.Abs(distance) < distanceRange) //is close enough to target?
                 {
                     //generate new random target within area bounds
-                    float xTarget = Random.Range(minX, maxX);
+                    float xTarget = xBound.RanFloat();
                     float yTarget;
-                    float zTarget = Random.Range(minZ, maxZ);
+                    float zTarget = xBound.RanFloat();
                     if (yMovement)
                     {
-                        yTarget = Random.Range(minY, maxY);
+                        yTarget = xBound.RanFloat();
                     }
                     else
                     {
