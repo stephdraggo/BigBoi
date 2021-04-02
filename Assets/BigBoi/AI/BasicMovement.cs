@@ -4,27 +4,50 @@ using UnityEngine;
 
 namespace BigBoi.AI
 {
+    /// <summary>
+    /// Basic movement class which moves an object using transform.position linearly towards its target.
+    /// </summary>
+    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Basic")]
     public class BasicMovement : MonoBehaviour
     {
-        [SerializeField]
         private Vector3 target;
+        /// <summary>
+        /// Entity currently moves towards this position.
+        /// </summary>
         public Vector3 Target => target;
 
-        [SerializeField] private float speed;
-        void Start()
-        {
-
-        }
+        [SerializeField,Tooltip("Speed multiplier for this entity.")]
+        private float speed;
 
         void Update()
         {
-            //this isn't right bc it adds a direction rather than pointing it towards a point
-            transform.position += Target * Time.deltaTime * speed;
+            Move();
         }
 
+        /// <summary>
+        /// Give this entity a new target.
+        /// </summary>
         public void ChangeTarget(Vector3 _target)
         {
             target = _target;
+        }
+
+        /// <summary>
+        /// Calculate direction towards target.
+        /// </summary>
+        protected Vector3 Direction()
+        {
+            Vector3 direction = target - transform.position;
+
+            return direction.normalized;
+        }
+
+        /// <summary>
+        /// Move towards target at given speed using transform.position.
+        /// </summary>
+        protected void Move()
+        {
+            transform.position += Direction() * Time.deltaTime * speed;
         }
     }
 }

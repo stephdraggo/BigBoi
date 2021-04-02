@@ -1,12 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace BigBoi.AI
 {
-    [AddComponentMenu("BigBoi/AI/Movement/Random 2D Movement")]
+    /// <summary>
+    /// Generates random targets within a range determined by mesh renderer.
+    /// Tested with plane and cube, rounded objects will most likely be treated as cubes when calculating area bounds.
+    /// Tickbox to allow vertical movement or keep entities grounded.
+    /// Mesh renderer must exist but can be disabled.
+    /// Limitations: area bounds are set at start and cannot be modified in runtime.
+    /// </summary>
+    [AddComponentMenu("BigBoi/AI/Movement/Group Movement/Random Movement Free Range")]
     [RequireComponent(typeof(MeshRenderer))]
-    public class RandomMovementPlane : MonoBehaviour
+    public class RandomMovementFreeRange : MonoBehaviour
     {
 
         [SerializeField, Tooltip("The entities that will move around in this space.")]
@@ -31,12 +37,12 @@ namespace BigBoi.AI
                 float xSize = mesh.bounds.size.x * 0.5f;
                 float ySize = mesh.bounds.size.y * 0.5f;
                 float zSize = mesh.bounds.size.z * 0.5f;
-                minX = (offset.x - xSize)*transform.localScale.x;
-                maxX = (offset.x + xSize)*transform.localScale.x;
-                minY = (offset.y - ySize)*transform.localScale.y;
-                maxY = (offset.y + ySize)*transform.localScale.y;
-                minZ = (offset.z - zSize)*transform.localScale.z;
-                maxZ = (offset.z + zSize)*transform.localScale.z;
+                minX = offset.x - xSize;
+                maxX = offset.x + xSize;
+                minY = offset.y - ySize;
+                maxY = offset.y + ySize;
+                minZ = offset.z - zSize;
+                maxZ = offset.z + zSize;
 
                 if (minX == maxX && minY == maxY && minZ == maxZ)
                 {
@@ -67,6 +73,8 @@ namespace BigBoi.AI
 
         void Update()
         {
+            //go through each entity and check if close enough to target
+            //generate new target if needed
             foreach (BasicMovement _entity in entities)
             {
                 float distance = _entity.transform.position.x - _entity.Target.x;
@@ -75,7 +83,7 @@ namespace BigBoi.AI
                 {
                     distance += _entity.transform.position.y - _entity.Target.y;
                 }
-                if (distance < distanceRange) //is close enough to target?
+                if (Mathf.Abs(distance) < distanceRange) //is close enough to target?
                 {
                     //generate new random target within area bounds
                     float xTarget = Random.Range(minX, maxX);
@@ -92,6 +100,22 @@ namespace BigBoi.AI
                     _entity.ChangeTarget(new Vector3(xTarget, yTarget, zTarget));
                 }
             }
+        }
+
+        /// <summary>
+        /// Dynamically remove an entity from random movement (for example to switch state to chasing something)
+        /// </summary>
+        public void RemoveFromList(BasicMovement _entity)
+        {
+            entities.Remove(_entity);
+        }
+
+        /// <summary>
+        /// Dynamically add an entity to random movement (for example to switch state to wandering)
+        /// </summary>
+        public void AddToList(BasicMovement _entity)
+        {
+            entities.Add(_entity);
         }
     }
 }
