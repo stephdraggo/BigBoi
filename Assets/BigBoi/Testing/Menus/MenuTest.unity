@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 211714682}
   - component: {fileID: 211714681}
   - component: {fileID: 211714684}
+  - component: {fileID: 211714685}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -334,6 +335,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+--- !u!114 &211714685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211714679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50486bd19a5e6a14caf5b359743bc60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayText: let's test this tooltip
+  displayArea: {fileID: 718691419}
 --- !u!1 &340182044
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,10 +538,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels:
-  - panelObject: {fileID: 0}
+  - panelObject: {fileID: 864499166}
+    activeOnStart: 0
+    alwaysVisible: 1
+    type: 0
+  - panelObject: {fileID: 435216656}
+    activeOnStart: 1
+    alwaysVisible: 0
+    type: 3
+  - panelObject: {fileID: 129029874}
     activeOnStart: 0
     alwaysVisible: 0
-    type: 0
+    type: 2
+  - panelObject: {fileID: 1760192217}
+    activeOnStart: 0
+    alwaysVisible: 0
+    type: 4
+  - panelObject: {fileID: 2140560633}
+    activeOnStart: 0
+    alwaysVisible: 0
+    type: 4
 --- !u!114 &624220306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +635,7 @@ RectTransform:
   - {fileID: 129029877}
   - {fileID: 1760192220}
   - {fileID: 2140560636}
+  - {fileID: 718691418}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -747,6 +779,85 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+--- !u!1 &718691417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718691418}
+  - component: {fileID: 718691420}
+  - component: {fileID: 718691419}
+  m_Layer: 5
+  m_Name: tooltip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &718691418
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718691417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 624220309}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -284.95926}
+  m_SizeDelta: {x: 1090, y: 43.0815}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &718691419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718691417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 6
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &718691420
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718691417}
+  m_CullTransparentMesh: 1
 --- !u!1 &864499166
 GameObject:
   m_ObjectHideFlags: 0
