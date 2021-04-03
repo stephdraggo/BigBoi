@@ -18,6 +18,10 @@ namespace BigBoi.GameDisplays
             FaceCam();
         }
 
+        /// <summary>
+        /// Finds distance between this object and the camera and passes the inverse to tranform.LookAt.
+        /// Call in update.
+        /// </summary>
         void FaceCam()
         {
             //find distance between camera and text

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Contains classes related to AI movement.
+/// </summary>
 namespace BigBoi.AI
 {
     /// <summary>
@@ -35,7 +38,7 @@ namespace BigBoi.AI
         protected float timer;
 
         /// <summary>
-        /// 
+        /// Under what circumstances the speed should be randomly changed.
         /// </summary>
         public enum SpeedChangeWhen
         {
@@ -45,11 +48,10 @@ namespace BigBoi.AI
         }
         #endregion
 
-        
-
-
         protected void Start()
         {
+            //if random speed on start only, do that
+            //also, set timer to 0 if for some reason it isn't
             if (randomiseSpeed)
             {
                 if (speedChange == SpeedChangeWhen.OnStartOnly)
@@ -75,7 +77,7 @@ namespace BigBoi.AI
 
 
 
-            Move();
+            Move(); //call move method
         }
 
         /// <summary>
@@ -85,6 +87,7 @@ namespace BigBoi.AI
         {
             target = _target;
 
+            //if random speed on change target, do that
             if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTargetChange)
             {
                 speed = range.RanFloat();
@@ -93,6 +96,7 @@ namespace BigBoi.AI
 
         /// <summary>
         /// Calculate direction towards target.
+        /// Base is shortest linear path, no pathfinding.
         /// </summary>
         protected Vector3 Direction()
         {
@@ -108,7 +112,5 @@ namespace BigBoi.AI
         {
             transform.position += Direction() * Time.deltaTime * speed;
         }
-
-
     }
 }
