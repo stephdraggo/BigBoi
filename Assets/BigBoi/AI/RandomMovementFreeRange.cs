@@ -86,10 +86,10 @@ namespace BigBoi.AI
                     //generate new random target within area bounds
                     float xTarget = xBound.RanFloat();
                     float yTarget;
-                    float zTarget = xBound.RanFloat();
+                    float zTarget = zBound.RanFloat();
                     if (yMovement)
                     {
-                        yTarget = xBound.RanFloat();
+                        yTarget = yBound.RanFloat();
                     }
                     else
                     {

@@ -25,7 +25,7 @@ namespace BigBoi.AI
         protected bool randomiseSpeed = false;
 
         [SerializeField, Tooltip("Range of random speed.")]
-        protected Vector2 range;
+        protected Vector2 range = new Vector2(1, 20);
 
         [SerializeField, Tooltip("When should speed be randomly set?")]
         protected SpeedChangeWhen speedChange;
@@ -34,6 +34,9 @@ namespace BigBoi.AI
         protected float interval;
         protected float timer;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum SpeedChangeWhen
         {
             OnStartOnly,
@@ -42,7 +45,7 @@ namespace BigBoi.AI
         }
         #endregion
 
-
+        
 
 
         protected void Start()
@@ -51,7 +54,7 @@ namespace BigBoi.AI
             {
                 if (speedChange == SpeedChangeWhen.OnStartOnly)
                 {
-                    speed = Random.Range(range.x, range.y);
+                    speed = range.RanFloat();
                 }
                 timer = 0;
             }
@@ -59,15 +62,19 @@ namespace BigBoi.AI
 
         protected void Update()
         {
+            //if random speed is timed, do that
             if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTimedInterval)
             {
                 if (timer >= interval)
                 {
-                    speed = Random.Range(range.x, range.y);
+                    speed = range.RanFloat();
                     timer = 0;
                 }
                 else timer += Time.deltaTime;
             }
+
+
+
             Move();
         }
 
@@ -80,7 +87,7 @@ namespace BigBoi.AI
 
             if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTargetChange)
             {
-                speed = Random.Range(range.x, range.y);
+                speed = range.RanFloat();
             }
         }
 

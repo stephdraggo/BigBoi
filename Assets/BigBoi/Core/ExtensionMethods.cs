@@ -22,6 +22,7 @@ namespace BigBoi
         #region Random Float from Vector2
         /// <summary>
         /// Generate random float from a vector2.
+        /// x does not have to be less than y.
         /// </summary>
         public static float RanFloat(this Vector2 _vector2)
         {
@@ -33,7 +34,7 @@ namespace BigBoi
             {
                 return Random.Range(_vector2.y, _vector2.x);
             }
-            else return 0;
+            else return _vector2.x;
         }
         #endregion
     }
