@@ -20,6 +20,8 @@ namespace BigBoi.AI
         /// </summary>
         public Vector3 Target => target;
 
+        protected Vector3 directionModifier;
+
         #region Speed Variables
         [SerializeField, Tooltip("Speed multiplier for this entity.")]
         protected float speed;
@@ -47,6 +49,9 @@ namespace BigBoi.AI
             OnTimedInterval,
         }
         #endregion
+
+
+
 
         protected void Start()
         {
@@ -110,7 +115,36 @@ namespace BigBoi.AI
         /// </summary>
         protected void Move()
         {
-            transform.position += Direction() * Time.deltaTime * speed;
+            transform.position += (Direction() + directionModifier) * Time.deltaTime * speed;
+        }
+
+        protected void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out BasicMovement _other))
+            {
+                directionModifier = (transform.position - _other.transform.position).normalized * 2;
+            }
+        }
+        protected void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out BasicMovement _other))
+            {
+                Vector3 startMod = directionModifier;
+                StartCoroutine(DirectionModifierOverTime(startMod));
+            }
+        }
+
+
+        protected IEnumerator DirectionModifierOverTime(Vector3 _start)
+        {
+            while (directionModifier.magnitude > 0.5f)
+            {
+
+                directionModifier -= _start * 0.1f;
+                yield return new WaitForFixedUpdate();
+            }
+
+            directionModifier = Vector3.zero;
         }
     }
 }
