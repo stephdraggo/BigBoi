@@ -972,6 +972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443669702}
+  - component: {fileID: 443669703}
   m_Layer: 0
   m_Name: units
   m_TagString: Untagged
@@ -1019,6 +1020,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &443669703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443669701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ee165689731d646b8d7ab237745556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entities:
+  - {fileID: 1782835820}
+  - {fileID: 1903536020}
+  - {fileID: 999438921}
+  - {fileID: 1405331795}
+  - {fileID: 341655436}
+  - {fileID: 1126923066}
+  - {fileID: 1823285926}
+  - {fileID: 1027968461}
+  - {fileID: 2072562960}
+  - {fileID: 1634327245}
+  - {fileID: 1949696532}
+  - {fileID: 48376166}
+  - {fileID: 1187758697}
+  - {fileID: 734503790}
+  - {fileID: 1590302201}
+  - {fileID: 1082413568}
+  - {fileID: 1389865519}
+  - {fileID: 1040190691}
+  - {fileID: 1168785381}
+  - {fileID: 254637799}
+  - {fileID: 1722560717}
+  - {fileID: 1223682108}
+  - {fileID: 1068427468}
+  - {fileID: 145417848}
+  - {fileID: 344093712}
+  - {fileID: 1512906478}
+  speed: 20
+  randomiseSpeed: 1
+  range: {x: 1, y: 20}
+  speedChange: 1
+  interval: 0
 --- !u!1 &531938863
 GameObject:
   m_ObjectHideFlags: 0

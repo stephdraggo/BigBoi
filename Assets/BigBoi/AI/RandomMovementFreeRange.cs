@@ -10,7 +10,7 @@ namespace BigBoi.AI
     /// Mesh renderer must exist but can be disabled.
     /// Limitations: area bounds are set at start and cannot be modified in runtime.
     /// </summary>
-    [AddComponentMenu("BigBoi/AI/Movement/Group Movement/Random Movement Free Range")]
+    [AddComponentMenu("BigBoi/AI/Movement/Targetting/Random Movement Free Range")]
     [RequireComponent(typeof(MeshRenderer))]
     public class RandomMovementFreeRange : MonoBehaviour
     {

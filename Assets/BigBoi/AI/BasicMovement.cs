@@ -11,7 +11,7 @@ namespace BigBoi.AI
     /// Basic movement class which moves an object using transform.position linearly towards its target.
     /// Implemented variations on randomising speed.
     /// </summary>
-    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Basic Movement")]
+    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Basic Movement (Single)")]
     public class BasicMovement : MonoBehaviour
     {
         protected Vector3 target;
@@ -99,6 +99,15 @@ namespace BigBoi.AI
             }
         }
 
+        public void ChangeSetup(float _speed, Vector2 _range, bool _random = false, SpeedChangeWhen _when = SpeedChangeWhen.OnStartOnly, float _interval = 5)
+        {
+            randomiseSpeed = _random;
+            speed = _speed;
+            range = _range;
+            speedChange = _when;
+            interval = _interval;
+        }
+
         /// <summary>
         /// Calculate direction towards target.
         /// Base is shortest linear path, no pathfinding.
@@ -129,8 +138,9 @@ namespace BigBoi.AI
         {
             if (collision.gameObject.TryGetComponent(out BasicMovement _other))
             {
-                Vector3 startMod = directionModifier;
-                StartCoroutine(DirectionModifierOverTime(startMod));
+                directionModifier = Vector3.zero;
+                //Vector3 startMod = directionModifier;
+                //StartCoroutine(DirectionModifierOverTime(startMod));
             }
         }
 
