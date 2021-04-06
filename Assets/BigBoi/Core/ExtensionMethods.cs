@@ -37,5 +37,27 @@ namespace BigBoi
             else return _vector2.x;
         }
         #endregion
+
+        #region Float within range of vector2
+        /// <summary>
+        /// Return true if the float in within the passed range (inclusive).
+        /// </summary>
+        public static bool InRange(this float _float, Vector2 _range)
+        {
+            if (_range.x > _range.y) //if wrong way
+            {
+                //flip
+                float temp = _range.x;
+                _range.x = _range.y;
+                _range.y = temp;
+            }
+
+            if (_float >= _range.x && _float <= _range.y)
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
     }
 }

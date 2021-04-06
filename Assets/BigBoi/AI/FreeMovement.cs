@@ -11,16 +11,14 @@ namespace BigBoi.AI
     /// Basic movement class which moves an object using transform.position linearly towards its target.
     /// Implemented variations on randomising speed.
     /// </summary>
-    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Basic Movement (Single)")]
-    public class BasicMovement : MonoBehaviour
+    [AddComponentMenu("BigBoi/AI/Movement/Single Movement/Free Movement (Single)")]
+    public class FreeMovement : MonoBehaviour
     {
         protected Vector3 target;
         /// <summary>
         /// Entity currently moves towards this position.
         /// </summary>
         public Vector3 Target => target;
-
-        protected Vector3 directionModifier;
 
         #region Speed Variables
         [SerializeField, Tooltip("Speed multiplier for this entity.")]
@@ -53,7 +51,7 @@ namespace BigBoi.AI
 
 
 
-        protected void Start()
+        protected virtual void Start()
         {
             //if random speed on start only, do that
             //also, set timer to 0 if for some reason it isn't
@@ -67,7 +65,7 @@ namespace BigBoi.AI
             }
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             //if random speed is timed, do that
             if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTimedInterval)
@@ -88,7 +86,7 @@ namespace BigBoi.AI
         /// <summary>
         /// Give this entity a new target.
         /// </summary>
-        public void ChangeTarget(Vector3 _target)
+        public virtual void ChangeTarget(Vector3 _target)
         {
             target = _target;
 
@@ -99,7 +97,7 @@ namespace BigBoi.AI
             }
         }
 
-        public void ChangeSetup(float _speed, Vector2 _range, bool _random = false, SpeedChangeWhen _when = SpeedChangeWhen.OnStartOnly, float _interval = 5)
+        public virtual void ChangeSetup(float _speed, Vector2 _range, bool _random = false, SpeedChangeWhen _when = SpeedChangeWhen.OnStartOnly, float _interval = 5)
         {
             randomiseSpeed = _random;
             speed = _speed;
@@ -112,7 +110,7 @@ namespace BigBoi.AI
         /// Calculate direction towards target.
         /// Base is shortest linear path, no pathfinding.
         /// </summary>
-        protected Vector3 Direction()
+        protected virtual Vector3 Direction()
         {
             Vector3 direction = target - transform.position;
 
@@ -122,39 +120,10 @@ namespace BigBoi.AI
         /// <summary>
         /// Move towards target at given speed using transform.position.
         /// </summary>
-        protected void Move()
+        protected virtual void Move()
         {
-            transform.position += (Direction() + directionModifier) * Time.deltaTime * speed;
+            transform.position += Direction() * Time.deltaTime * speed;
         }
 
-        protected void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.TryGetComponent(out BasicMovement _other))
-            {
-                directionModifier = (transform.position - _other.transform.position).normalized * 2;
-            }
-        }
-        protected void OnCollisionExit(Collision collision)
-        {
-            if (collision.gameObject.TryGetComponent(out BasicMovement _other))
-            {
-                directionModifier = Vector3.zero;
-                //Vector3 startMod = directionModifier;
-                //StartCoroutine(DirectionModifierOverTime(startMod));
-            }
-        }
-
-
-        protected IEnumerator DirectionModifierOverTime(Vector3 _start)
-        {
-            while (directionModifier.magnitude > 0.5f)
-            {
-
-                directionModifier -= _start * 0.1f;
-                yield return new WaitForFixedUpdate();
-            }
-
-            directionModifier = Vector3.zero;
-        }
     }
 }

@@ -7,7 +7,7 @@ namespace BigBoi.AI
     /// <summary>
     /// Easy to read editor for BasicMovement.
     /// </summary>
-    [CustomEditor(typeof(BasicMovement))]
+    [CustomEditor(typeof(FreeMovement))]
     [CanEditMultipleObjects]
     public class BasicMovementEditor : Editor
     {
@@ -27,7 +27,7 @@ namespace BigBoi.AI
             randomiseSpeed.value = pRandomiseSpeed.boolValue;
             randomiseSpeed.valueChanged.AddListener(Repaint);
 
-            changeOnTimed.value = ((BasicMovement.SpeedChangeWhen)pSpeedChange.enumValueIndex) == BasicMovement.SpeedChangeWhen.OnTimedInterval;
+            changeOnTimed.value = ((FreeMovement.SpeedChangeWhen)pSpeedChange.enumValueIndex) == FreeMovement.SpeedChangeWhen.OnTimedInterval;
             changeOnTimed.valueChanged.AddListener(Repaint);
         }
 
@@ -51,7 +51,7 @@ namespace BigBoi.AI
                     EditorGUILayout.PropertyField(pSpeedChange);
 
                     //random change interval
-                    changeOnTimed.target = ((BasicMovement.SpeedChangeWhen)pSpeedChange.enumValueIndex) == BasicMovement.SpeedChangeWhen.OnTimedInterval;
+                    changeOnTimed.target = ((FreeMovement.SpeedChangeWhen)pSpeedChange.enumValueIndex) == FreeMovement.SpeedChangeWhen.OnTimedInterval;
                     if (EditorGUILayout.BeginFadeGroup(changeOnTimed.faded))
                     {
                         EditorGUILayout.PropertyField(pInterval);
