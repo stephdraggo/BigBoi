@@ -8,6 +8,7 @@ namespace BigBoi.AI
     /// Easy to read editor for BasicMovement.
     /// </summary>
     [CustomEditor(typeof(BasicMovement))]
+    [CanEditMultipleObjects]
     public class BasicMovementEditor : Editor
     {
         protected SerializedProperty pSpeed, pRandomiseSpeed, pRange, pSpeedChange, pInterval;

@@ -5,6 +5,7 @@ using UnityEditor.AnimatedValues;
 namespace BigBoi.Menus.OptionsMenuSystem
 {
     [CustomEditor(typeof(CustomKeybinds))]
+    [CanEditMultipleObjects]
     public class CustomKeybindsEditor : Editor
     {
         private SerializedProperty pButtonPrefab, pBaseColour, pSelectedColour, pChangedColour, pIncludeResetButton, pResetButton, pKeybinds;
