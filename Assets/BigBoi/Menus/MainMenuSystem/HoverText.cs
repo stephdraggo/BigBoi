@@ -39,7 +39,7 @@ namespace BigBoi.Menus
             displayArea.gameObject.SetActive(false);
         }
         #endregion
-
+        //OR
         #region Object functionality
         public void OnMouseEnter()
         {
