@@ -54,7 +54,8 @@ namespace BigBoi.Menus
         #endregion
 
         /// <summary>
-        /// This might show an error when exiting playmode but it's not a problem.
+        /// This might show a null reference exception but it's not a problem.
+        /// This is just a clean-up method.
         /// </summary>
         public void OnDisable()
         {
