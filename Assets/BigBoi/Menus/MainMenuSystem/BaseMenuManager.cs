@@ -33,6 +33,9 @@ namespace BigBoi.Menus
             [Tooltip("Should this panel always be visible? Example: HUD.\nIf this is selected, activeOnStart should also be selected but the script will fix this if missed.")]
             public bool alwaysVisible;
 
+            [Tooltip("Should this panel pause and/or disable gameplay while active?\nHas no effect in non game scenes.")]
+            public bool disableGame;
+
             [Tooltip("Which predefined type is this panel? To add or remove types, change the 'PanelTypes' enum in BaseMenuManager.cs.")]
             public PanelTypes type;
         }
@@ -68,6 +71,8 @@ namespace BigBoi.Menus
                 DisablePanels();
 
                 panels[_index].panelObject.SetActive(true);
+
+                ExtraEnableFunctionality(panels[_index]);
             }
             else
             {
@@ -87,6 +92,8 @@ namespace BigBoi.Menus
                     _panel.panelObject.SetActive(false);
                 }
             }
+
+            ExtraDisableFunctionality();
         }
 
         /// <summary>
@@ -103,13 +110,20 @@ namespace BigBoi.Menus
                     DisablePanels();
 
                     _panel.panelObject.SetActive(true);
+
+                    ExtraEnableFunctionality(_panel);
+
                     return; //if more than one of this type, only enable first one
                 }
             }
         }
 
+        protected virtual void ExtraEnableFunctionality(PanelDetails _panel) { }
+        protected virtual void ExtraDisableFunctionality() { }
+
     }
 
+    
     
     public enum PanelTypes
     {

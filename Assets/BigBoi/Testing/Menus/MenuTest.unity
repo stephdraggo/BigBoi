@@ -1569,6 +1569,7 @@ GameObject:
   - component: {fileID: 624220307}
   - component: {fileID: 624220306}
   - component: {fileID: 624220305}
+  - component: {fileID: 624220310}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1583,7 +1584,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624220304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c00d950481bacb4b9a22115b81c8b93, type: 3}
   m_Name: 
@@ -1592,22 +1593,27 @@ MonoBehaviour:
   - panelObject: {fileID: 864499166}
     activeOnStart: 0
     alwaysVisible: 1
+    disableGame: 0
     type: 0
   - panelObject: {fileID: 435216656}
     activeOnStart: 1
     alwaysVisible: 0
+    disableGame: 0
     type: 3
   - panelObject: {fileID: 129029874}
     activeOnStart: 0
     alwaysVisible: 0
+    disableGame: 0
     type: 2
   - panelObject: {fileID: 1760192217}
     activeOnStart: 0
     alwaysVisible: 0
+    disableGame: 0
     type: 4
   - panelObject: {fileID: 2140560633}
     activeOnStart: 0
     alwaysVisible: 0
+    disableGame: 0
     type: 4
 --- !u!114 &624220306
 MonoBehaviour:
@@ -1695,6 +1701,75 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &624220310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624220304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34eeccc8cb578142957a08f33b27720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panels:
+  - panelObject: {fileID: 864499166}
+    activeOnStart: 0
+    alwaysVisible: 1
+    disableGame: 0
+    type: 0
+  - panelObject: {fileID: 435216656}
+    activeOnStart: 1
+    alwaysVisible: 0
+    disableGame: 1
+    type: 3
+  - panelObject: {fileID: 129029874}
+    activeOnStart: 0
+    alwaysVisible: 0
+    disableGame: 1
+    type: 2
+  - panelObject: {fileID: 1760192217}
+    activeOnStart: 0
+    alwaysVisible: 0
+    disableGame: 0
+    type: 4
+  - panelObject: {fileID: 2140560633}
+    activeOnStart: 0
+    alwaysVisible: 0
+    disableGame: 1
+    type: 4
+  keyToCallPause: 112
+  disableGame:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8912941903242646443, guid: e77b849aa504a3f41bcd6d25ce8e1b6b, type: 3}
+        m_TargetAssemblyTypeName: MenuTesting, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  enableGame:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8912941903242646443, guid: e77b849aa504a3f41bcd6d25ce8e1b6b, type: 3}
+        m_TargetAssemblyTypeName: MenuTesting, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &643661804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,7 +2514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: stats
 --- !u!222 &929116819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3150,7 +3225,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: resume
+  m_Text: toggles
 --- !u!222 &1347279100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3747,9 +3822,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551474361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a44ee9a80041e408f5b2ae65d749c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1890e4d2d4a9b4a45b6030a5fa6d130e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 4
 --- !u!1 &1603053328
 GameObject:
   m_ObjectHideFlags: 0
