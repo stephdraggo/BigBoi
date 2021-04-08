@@ -6,7 +6,7 @@ namespace BigBoi.Menus
 {
     /// <summary>
     /// Displays some text when mouse hovers over the object this script is attached to.
-    /// Works for UI elements, not sure if works for other types.
+    /// Works for canvas and objects.
     /// </summary>
     [AddComponentMenu("BigBoi/Menu System/Methods/Display Text on Hover")]
     public class HoverText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -27,6 +27,7 @@ namespace BigBoi.Menus
             }
         }
 
+        #region Canvas functionality
         public void OnPointerEnter(PointerEventData _eventData)
         {
             displayArea.gameObject.SetActive(true);
@@ -37,7 +38,24 @@ namespace BigBoi.Menus
         {
             displayArea.gameObject.SetActive(false);
         }
+        #endregion
 
+        #region Object functionality
+        public void OnMouseEnter()
+        {
+            displayArea.gameObject.SetActive(true);
+            displayArea.text = displayText;
+        }
+
+        public void OnMouseExit()
+        {
+            displayArea.gameObject.SetActive(false);
+        }
+        #endregion
+
+        /// <summary>
+        /// This might show an error when exiting playmode but it's not a problem.
+        /// </summary>
         public void OnDisable()
         {
             displayArea.gameObject.SetActive(false);

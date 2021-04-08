@@ -25,10 +25,10 @@ namespace BigBoi.AI
             agent.destination = target;
         }
 
-        protected override void Move()
-        {
-            //base.Move();
-        }
+        //protected override void Move()
+        //{
+        //    //base.Move();
+        //}
 
         public override void ChangeTarget(Vector3 _target)
         {

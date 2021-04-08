@@ -19,7 +19,55 @@ namespace BigBoi
         }
         #endregion
 
-        #region Random Float from Vector2
+        #region Array.Add
+        #region single element
+        /// <summary>
+        /// Add element to the end or begining of an existing array.
+        /// </summary>
+        /// <param name="_front">Should the added element be at the begining of the array? Defaults to end of array.</param>
+        public static T[] Add<T>(this T[] _array, T _element, bool _front = false)
+        {
+            T[] newArray = new T[_array.Length + 1];
+            if (_front)
+            {
+                _array.CopyTo(newArray, 1);
+                newArray[0] = _element;
+            }
+            else
+            {
+                _array.CopyTo(newArray, 0);
+                newArray[_array.Length] = _element;
+            }
+
+            return newArray;
+        }
+        #endregion
+
+        #region array
+        /// <summary>
+        /// Add array to the end or begining of an existing array.
+        /// </summary>
+        /// <param name="_front">Should the added array be at the begining of the existing array? Defaults to end of array.</param>
+        public static T[] Add<T>(this T[] _array, T[] _addArray, bool _front = false)
+        {
+            T[] newArray = new T[_array.Length + _addArray.Length];
+            if (_front)
+            {
+                _array.CopyTo(newArray, _addArray.Length);
+                _addArray.CopyTo(newArray, 0);
+            }
+            else
+            {
+                _array.CopyTo(newArray, 0);
+                _addArray.CopyTo(newArray, _array.Length);
+            }
+
+            return newArray;
+        }
+        #endregion
+        #endregion
+
+        #region Vector2.RanFloat
         /// <summary>
         /// Generate random float from a vector2.
         /// x does not have to be less than y.
@@ -38,7 +86,7 @@ namespace BigBoi
         }
         #endregion
 
-        #region Float within range of vector2
+        #region Float.InRange : Float within range of vector2? bool
         /// <summary>
         /// Return true if the float in within the passed range (inclusive).
         /// </summary>
