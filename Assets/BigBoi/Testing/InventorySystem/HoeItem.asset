@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca45beb5310dad41ba9c54cf8364872, type: 3}
+  m_Name: HoeItem
+  m_EditorClassIdentifier: 
+  displayName: Hoe
+  description: used to till the earth
+  category: {fileID: 11400000, guid: 4fd977cba4ea23d4e9417fd650ecea1c, type: 2}
+  itemID: 3
+  measurement: 0
+  units: 
+  oneUnit: 
+  multipleUnits: 
+  possibleActions:
+    eat: 0
+    drink: 0
+    use: 1
+    combine: 0
+    equip: 1
