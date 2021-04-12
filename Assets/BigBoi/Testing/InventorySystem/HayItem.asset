@@ -27,3 +27,5 @@ MonoBehaviour:
     use: 0
     combine: 1
     equip: 0
+  edibleEffectType: 0
+  effectValue: 0
