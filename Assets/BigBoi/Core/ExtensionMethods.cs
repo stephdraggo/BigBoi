@@ -107,5 +107,18 @@ namespace BigBoi
             return false;
         }
         #endregion
+
+        #region Vector3.Multiply
+        /// <summary>
+        /// Multiply one vector3 by another.
+        /// </summary>
+        public static Vector3 Multiply(this Vector3 a, Vector3 b)
+        {
+            float x = a.x * b.x;
+            float y = a.y * b.y;
+            float z = a.z * b.z;
+            return new Vector3(x, y, z);
+        }
+        #endregion
     }
 }
