@@ -67,25 +67,6 @@ namespace BigBoi
         #endregion
         #endregion
 
-        #region Vector2.RanFloat
-        /// <summary>
-        /// Generate random float from a vector2.
-        /// x does not have to be less than y.
-        /// </summary>
-        public static float RanFloat(this Vector2 _vector2)
-        {
-            if (_vector2.x < _vector2.y)
-            {
-                return Random.Range(_vector2.x, _vector2.y);
-            }
-            else if (_vector2.x > _vector2.y)
-            {
-                return Random.Range(_vector2.y, _vector2.x);
-            }
-            else return _vector2.x;
-        }
-        #endregion
-
         #region Float.InRange : Float within range of vector2? bool
         /// <summary>
         /// Return true if the float in within the passed range (inclusive).
@@ -107,5 +88,38 @@ namespace BigBoi
             return false;
         }
         #endregion
+
+        #region Vector2.RanFloat
+        /// <summary>
+        /// Generate random float from a vector2.
+        /// x does not have to be less than y.
+        /// </summary>
+        public static float RanFloat(this Vector2 _vector2)
+        {
+            if (_vector2.x < _vector2.y)
+            {
+                return Random.Range(_vector2.x, _vector2.y);
+            }
+            else if (_vector2.x > _vector2.y)
+            {
+                return Random.Range(_vector2.y, _vector2.x);
+            }
+            else return _vector2.x;
+        }
+        #endregion
+
+        #region Vector3.Multiply
+        /// <summary>
+        /// Multiply one vector3 by another.
+        /// </summary>
+        public static Vector3 Multiply(this Vector3 a, Vector3 b)
+        {
+            float x = a.x * b.x;
+            float y = a.y * b.y;
+            float z = a.z * b.z;
+            return new Vector3(x, y, z);
+        }
+        #endregion
+
     }
 }
