@@ -28,6 +28,13 @@ namespace BigBoi.AI
 
         protected virtual void Start()
         {
+            int i = 0;
+            while (i< entities.Count)
+            {
+                if (entities[i].gameObject.activeSelf == false) RemoveFromList(entities[i]);
+                else i++;
+            }
+
             //get the bounds from the shape
             mesh = GetComponent<MeshRenderer>();
 
@@ -81,7 +88,7 @@ namespace BigBoi.AI
                 if (Mathf.Abs(distance) < distanceRange) //is close enough to target?
                 {
                     //generate new random target within area bounds
-                    
+
                     _entity.ChangeTarget(GenerateTarget(_entity));
                 }
             }

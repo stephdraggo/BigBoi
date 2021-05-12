@@ -14,9 +14,14 @@ namespace BigBoi.AI
     {
         private NavMeshAgent agent;
 
-        protected override void Start()
+        private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+
+        }
+        protected override void Start()
+        {
+            
             agent.autoRepath = true;
             agent.speed = speed;
 
@@ -25,14 +30,16 @@ namespace BigBoi.AI
             agent.destination = target;
         }
 
-        //protected override void Move()
-        //{
-        //    //base.Move();
-        //}
+        protected override void Move()
+        {
+            //base.Move();
+        }
 
         public override void ChangeTarget(Vector3 _target)
         {
-            agent.destination = _target;
+
+            target = _target;
+            agent.destination = target;
 
             //if random speed on change target, do that
             if (randomiseSpeed && speedChange == SpeedChangeWhen.OnTargetChange)
