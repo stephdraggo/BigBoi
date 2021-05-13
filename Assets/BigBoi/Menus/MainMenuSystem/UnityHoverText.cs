@@ -8,8 +8,8 @@ namespace BigBoi.Menus
     /// Displays some text when mouse hovers over the object this script is attached to.
     /// Works for canvas and objects.
     /// </summary>
-    [AddComponentMenu("BigBoi/Menu System/Methods/Display Text on Hover")]
-    public class HoverText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    [AddComponentMenu("BigBoi/Menu System/Methods/Display Text on Hover (Unity Default)")]
+    public class UnityHoverText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField, TextArea, Tooltip("Text to display when the player hovers over this object.")]
         private string displayText = "";

@@ -1,35 +1,39 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace BigBoi.Menus.OptionsMenuSystem
 {
-    [AddComponentMenu("BigBoi/Options Menu System/Quality Dropdown")]
-    [RequireComponent(typeof(Dropdown))]
-    public class QualityDropdown : MonoBehaviour
+    [AddComponentMenu("BigBoi/Options Menu System/Quality Dropdown (TMPro)")]
+    [RequireComponent(typeof(TMP_Dropdown))]
+    public class TMProQualityDropdown : MonoBehaviour
     {
-        private Dropdown dropdown;
+        private TMP_Dropdown dropdown;
         private string saveName;
 
-
-        void Start()
+        private void OnValidate()
         {
             saveName = "QualityLevel"; //generate save name
 
-            dropdown = GetComponent<Dropdown>(); //connect to own dropdown
+            dropdown = GetComponent<TMP_Dropdown>(); //connect to own dropdown
 
             dropdown.onValueChanged.AddListener(SetGraphics); //add method to event group
+        }
 
+        private void Start()
+        {
             int qualityCount = QualitySettings.names.Length; //get number of quality settings allowed
 
             //fill dropdown here
             dropdown.ClearOptions(); //clear options
-            List<Dropdown.OptionData> options = new List<Dropdown.OptionData>(); //make list of new items
-            Dropdown.OptionData item = new Dropdown.OptionData(); //create empty item
+            List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>(); //make list of new items
+            TMP_Dropdown.OptionData item = new TMP_Dropdown.OptionData(); //create empty item
 
             for (int i = 0; i < qualityCount; i++)
             {
-                item = new Dropdown.OptionData(QualitySettings.names[i]); //change empty item to this
+                item = new TMP_Dropdown.OptionData(QualitySettings.names[i]); //change empty item to this
                 options.Add(item); //add item to list
             }
             dropdown.AddOptions(options); //add options to dropdown
@@ -45,12 +49,7 @@ namespace BigBoi.Menus.OptionsMenuSystem
             dropdown.RefreshShownValue(); //refresh display
         }
 
-        void Update()
-        {
-
-        }
-
-        void SetGraphics(int _index)
+        private void SetGraphics(int _index)
         {
             QualitySettings.SetQualityLevel(_index);
             PlayerPrefs.SetInt(saveName, _index);

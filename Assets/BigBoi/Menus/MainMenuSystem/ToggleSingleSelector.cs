@@ -18,6 +18,12 @@ namespace BigBoi.Menus
         /// </summary>
         protected Toggle lastToggled;
 
+        [SerializeField,Tooltip("Should this group start with a toggle on?")]
+        protected bool toggleOnStart = false;
+
+        [SerializeField,Tooltip("Index of toggle that should start on. No effect if Toggle On Start is not true.")]
+        protected int startToggleIndex = 0;
+
 
         protected void Start()
         {
@@ -50,8 +56,14 @@ namespace BigBoi.Menus
         }
 
         /// <summary>
-        /// Empty method for logic determining which (if any) toggle should start toggled on.
+        /// If a toggle should start toggled on.
         /// </summary>
-        protected virtual void ToggleActiveOnStart() { }
+        protected virtual void ToggleActiveOnStart() 
+        {
+            if (toggleOnStart)
+            {
+                toggles[startToggleIndex].isOn = true;
+            }
+        }
     }
 }

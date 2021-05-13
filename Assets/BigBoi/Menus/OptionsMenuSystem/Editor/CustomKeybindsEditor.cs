@@ -4,7 +4,7 @@ using UnityEditor.AnimatedValues;
 
 namespace BigBoi.Menus.OptionsMenuSystem
 {
-    [CustomEditor(typeof(CustomKeybinds))]
+    [CustomEditor(typeof(UnityCustomKeybinds))]
     [CanEditMultipleObjects]
     public class CustomKeybindsEditor : Editor
     {

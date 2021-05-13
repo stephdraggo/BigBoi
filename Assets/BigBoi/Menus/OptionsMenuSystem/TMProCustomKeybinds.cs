@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace BigBoi.Menus.OptionsMenuSystem
 {
-    [AddComponentMenu("BigBoi/Options Menu System/Custom Keybinds")]
-    public class CustomKeybinds : MonoBehaviour
+    [AddComponentMenu("BigBoi/Options Menu System/Custom Keybinds (TMPro)")]
+    public class TMProCustomKeybinds : MonoBehaviour
     {
         [Serializable]
         public struct KeyBind
@@ -18,16 +17,10 @@ namespace BigBoi.Menus.OptionsMenuSystem
             public string keyName => key.ToString();
 
             //do not want these to display on inspector
-            public GameObject KeySet { get => keySet; set => keySet = value; }
-            private GameObject keySet;
-            public Button KeyButton { get => keyButton; set => keyButton = value; }
-            private Button keyButton;
-            public Text DisplayText { get => displayText; set => displayText = value; }
-            public Text ButtonText { get => buttonText; set => buttonText = value; }
-            private Text displayText, buttonText;
-            public Image KeyImage { get => keyImage; set => keyImage = value; }
-            private Image keyImage;
-
+            [HideInInspector] public GameObject keySet;
+            [HideInInspector] public Button keyButton;
+            [HideInInspector] public TMP_Text displayText, buttonText;
+            [HideInInspector] public Image keyImage;
         }
 
         [SerializeField, Tooltip("This prefab must follow a specific format:\n\nRoot object is a Text object - displays action name.\n\nChild object is a Button - displays key currently bound to the action.")]
@@ -52,7 +45,20 @@ namespace BigBoi.Menus.OptionsMenuSystem
         private bool waitingForInput;
         private KeyBind selectedKey;
 
-        void Start()
+
+        private void OnValidate()
+        {
+            if (TryGetComponent(out LayoutGroup _group)) //if there is a layout group attached to this object
+            {
+                if (!_group.isActiveAndEnabled) //if not enabled
+                {
+                    _group.enabled = true; //enable it
+                }
+            }
+            else gameObject.AddComponent<VerticalLayoutGroup>(); //add a vertical layout group
+        }
+
+        private void Start()
         {
             keyCount = keybinds.Length;
             waitingForInput = false;
@@ -63,16 +69,14 @@ namespace BigBoi.Menus.OptionsMenuSystem
                 if (!_group.isActiveAndEnabled) //if not enabled
                 {
                     _group.enabled = true; //enable it
-
                 }
             }
             else gameObject.AddComponent<VerticalLayoutGroup>(); //add a vertical layout group
-
-
+         
             if (resetButton != null) //if reset button attached
             {
                 resetButton.onClick.AddListener(ResetKeys); //add method to the button
-                resetButton.GetComponentInChildren<Text>().text = "Reset Keybinds";
+                resetButton.GetComponentInChildren<TMP_Text>().text = "Reset Keybinds";
             }
             resetToTheseKeys = new KeyCode[keyCount]; //make array for default keys
             for (int i = 0; i < keyCount; i++) //loop through original keys (before accessing playerprefs)
@@ -86,17 +90,17 @@ namespace BigBoi.Menus.OptionsMenuSystem
                 GameObject newButton = Instantiate(buttonPrefab, transform); //generate new button
 
                 //assign keybind struct object references
-                keybinds[i].KeySet = newButton;
-                keybinds[i].DisplayText = keybinds[i].KeySet.GetComponent<Text>();
-                keybinds[i].KeyButton = keybinds[i].KeySet.GetComponentInChildren<Button>();
-                keybinds[i].ButtonText = keybinds[i].KeyButton.GetComponentInChildren<Text>();
-                keybinds[i].KeyImage = keybinds[i].KeyButton.GetComponent<Image>();
+                keybinds[i].keySet = newButton;
+                keybinds[i].displayText = keybinds[i].keySet.GetComponent<TMP_Text>();
+                keybinds[i].keyButton = keybinds[i].keySet.GetComponentInChildren<Button>();
+                keybinds[i].buttonText = keybinds[i].keyButton.GetComponentInChildren<TMP_Text>();
+                keybinds[i].keyImage = keybinds[i].keyButton.GetComponent<Image>();
 
-                keybinds[i].DisplayText.text = keybinds[i].actionName; //display action name
-                keybinds[i].KeyImage.color = baseColour; //make sure button is base colour
+                keybinds[i].displayText.text = keybinds[i].actionName; //display action name
+                keybinds[i].keyImage.color = baseColour; //make sure button is base colour
 
                 KeyBind newKeyBind = keybinds[i]; //separate parameter (this fixes index out of bounds)
-                keybinds[i].KeyButton.onClick.AddListener(() => SelectKey(newKeyBind)); //add method with parameter to button
+                keybinds[i].keyButton.onClick.AddListener(() => SelectKey(newKeyBind)); //add method with parameter to button
 
 
 
@@ -109,11 +113,13 @@ namespace BigBoi.Menus.OptionsMenuSystem
                     PlayerPrefs.SetString(keybinds[i].saveName, keybinds[i].keyName); //save key as string
                 }
 
-                keybinds[i].ButtonText.text = keybinds[i].keyName; //update display
+                keybinds[i].buttonText.text = keybinds[i].keyName; //update display
                 newButton.name = keybinds[i].actionName + " Key Configure Button"; //name object in hierarchy
 
             }
         }
+
+
 
         private void OnGUI()
         {
@@ -124,7 +130,7 @@ namespace BigBoi.Menus.OptionsMenuSystem
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        selectedKey.KeyImage.color = baseColour;
+                        selectedKey.keyImage.color = baseColour;
                         waitingForInput = false;
                         return;
                     }
@@ -141,7 +147,7 @@ namespace BigBoi.Menus.OptionsMenuSystem
         //apparently this method gets index out of bounds
         void SelectKey(KeyBind _keybind)
         {
-            _keybind.KeyImage.color = selectedColour; //change colour to "selected"
+            _keybind.keyImage.color = selectedColour; //change colour to "selected"
 
             selectedKey = _keybind; //assign currently selected
 
@@ -152,8 +158,8 @@ namespace BigBoi.Menus.OptionsMenuSystem
         {
             _keybind.key = _newCode; //change key
 
-            _keybind.ButtonText.text = _keybind.keyName; //update display
-            _keybind.KeyImage.color = changedColour; //change colour of button to "changed"
+            _keybind.buttonText.text = _keybind.keyName; //update display
+            _keybind.keyImage.color = changedColour; //change colour of button to "changed"
 
             PlayerPrefs.SetString(_keybind.saveName, _keybind.keyName);
 
@@ -166,7 +172,7 @@ namespace BigBoi.Menus.OptionsMenuSystem
             {
                 ChangeKey(keybinds[i], resetToTheseKeys[i]); //call change keys for the key, feeding the default keys
 
-                keybinds[i].KeyImage.color = baseColour; //reset colour of button as well
+                keybinds[i].keyImage.color = baseColour; //reset colour of button as well
             }
         }
     }

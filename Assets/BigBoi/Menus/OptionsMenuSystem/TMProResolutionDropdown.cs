@@ -1,26 +1,30 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace BigBoi.Menus.OptionsMenuSystem
 {
-    [AddComponentMenu("BigBoi/Options Menu System/Resolutions Dropdown")]
-    [RequireComponent(typeof(Dropdown))]
+    [AddComponentMenu("BigBoi/Options Menu System/Resolutions Dropdown (TMPro)")]
+    [RequireComponent(typeof(TMP_Dropdown))]
 
-    public class ResolutionsDropdown : MonoBehaviour
+    public class TMProResolutionDropdown : MonoBehaviour
     {
-        private Dropdown dropdown;
+        private TMP_Dropdown dropdown;
         private string saveName;
         private Resolution[] resolutions;
 
-        void Start()
+        private void OnValidate()
         {
             saveName = "Resolution";
 
-            dropdown = GetComponent<Dropdown>(); //connect to own dropdown
+            dropdown = GetComponent<TMP_Dropdown>(); //connect to own dropdown
 
             dropdown.onValueChanged.AddListener(SetResolution); //add method to event group
+        }
 
+        private void Start()
+        {
             //decided not to save an array of resolutions to playerprefs and instead generate the array each start
             resolutions = Screen.resolutions; //fill array with all possible resolutions for the current screen
             dropdown.ClearOptions(); //clear selection
@@ -49,8 +53,7 @@ namespace BigBoi.Menus.OptionsMenuSystem
             dropdown.RefreshShownValue(); //refresh display
         }
 
-
-        public void SetResolution(int _index)
+        private void SetResolution(int _index)
         {
             Screen.SetResolution(resolutions[_index].width, resolutions[_index].height, Screen.fullScreenMode); //set selected resolution
             PlayerPrefs.SetInt(saveName, _index); //save resolution index
