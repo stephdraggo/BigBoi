@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a771d194df9c194f93435f60859e5df, type: 3}
+  m_Name: testOptions
+  m_EditorClassIdentifier: 
+  availableMethods:
+  - name: exit playmode
+    type: 0
+    uiObject: {fileID: 4540785203139287001, guid: 7eaeb694b8a7a5941a055066801cb46f, type: 3}
+    buttonEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    sliderEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    toggleEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    dropdownEvent:
+      m_PersistentCalls:
+        m_Calls: []
