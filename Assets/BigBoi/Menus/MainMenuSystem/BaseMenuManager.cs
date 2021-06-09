@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// The Menu System for switching between panels and loading scenes.
 /// </summary>
-namespace BigBoi.Menus
+namespace BigBoi.Menus.Generic
 {
     /// <summary>
     /// Base menu manager, not to be used alone.

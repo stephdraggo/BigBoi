@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-namespace BigBoi.Menus
+namespace BigBoi.Menus.Generic
 {
     /// <summary>
     /// Displays some text when mouse hovers over the object this script is attached to.

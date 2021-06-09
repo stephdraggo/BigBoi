@@ -1,12 +1,18 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.AnimatedValues;
+
+#endif
 
 namespace BigBoi.Menus.OptionsMenuSystem
 {
     [AddComponentMenu("BigBoi/Options Menu System/Custom Keybinds (Unity default)")]
     public class UnityCustomKeybinds : MonoBehaviour
-    { [Serializable]
+    {
+        [Serializable]
         public struct KeyBind
         {
             public string actionName;
@@ -21,7 +27,9 @@ namespace BigBoi.Menus.OptionsMenuSystem
             [HideInInspector] public Image keyImage;
         }
 
-        [SerializeField, Tooltip("This prefab must follow a specific format:\n\nRoot object is a Text object - displays action name.\n\nChild object is a Button - displays key currently bound to the action.")]
+        [SerializeField,
+         Tooltip(
+             "This prefab must follow a specific format:\n\nRoot object is a Text object - displays action name.\n\nChild object is a Button - displays key currently bound to the action.")]
         private GameObject buttonPrefab;
 
         [SerializeField, Tooltip("Colours to display ")]
@@ -60,13 +68,16 @@ namespace BigBoi.Menus.OptionsMenuSystem
         {
             keyCount = keybinds.Length;
             waitingForInput = false;
-            selectedKey = keybinds[0]; //set to first keybind by default bc keybinds are not nullable, should not be accessible when not relevant
+            selectedKey =
+                keybinds
+                    [0]; //set to first keybind by default bc keybinds are not nullable, should not be accessible when not relevant
 
             if (resetButton != null) //if reset button attached
             {
                 resetButton.onClick.AddListener(ResetKeys); //add method to the button
                 resetButton.GetComponentInChildren<Text>().text = "Reset Keybinds";
             }
+
             resetToTheseKeys = new KeyCode[keyCount]; //make array for default keys
             for (int i = 0; i < keyCount; i++) //loop through original keys (before accessing playerprefs)
             {
@@ -88,13 +99,15 @@ namespace BigBoi.Menus.OptionsMenuSystem
                 keybinds[i].keyImage.color = baseColour; //make sure button is base colour
 
                 KeyBind newKeyBind = keybinds[i]; //separate parameter (this fixes index out of bounds)
-                keybinds[i].keyButton.onClick.AddListener(() => SelectKey(newKeyBind)); //add method with parameter to button
-
+                keybinds[i].keyButton.onClick
+                    .AddListener(() => SelectKey(newKeyBind)); //add method with parameter to button
 
 
                 if (PlayerPrefs.HasKey(keybinds[i].saveName)) //if this key has a saved value
                 {
-                    keybinds[i].key = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(keybinds[i].saveName)); //change bound key to match saved key string
+                    keybinds[i].key =
+                        (KeyCode) Enum.Parse(typeof(KeyCode),
+                            PlayerPrefs.GetString(keybinds[i].saveName)); //change bound key to match saved key string
                 }
                 else
                 {
@@ -103,11 +116,9 @@ namespace BigBoi.Menus.OptionsMenuSystem
 
                 keybinds[i].buttonText.text = keybinds[i].keyName; //update display
                 newButton.name = keybinds[i].actionName + " Key Configure Button"; //name object in hierarchy
-
             }
         }
 
-        
 
         private void OnGUI()
         {
@@ -122,6 +133,7 @@ namespace BigBoi.Menus.OptionsMenuSystem
                         waitingForInput = false;
                         return;
                     }
+
                     if (e.isKey) //if event is a key press
                     {
                         ChangeKey(selectedKey, e.keyCode); //call change key with selected key and e's keycode
@@ -129,7 +141,6 @@ namespace BigBoi.Menus.OptionsMenuSystem
                 }
             }
         }
-
 
 
         //apparently this method gets index out of bounds
@@ -163,6 +174,96 @@ namespace BigBoi.Menus.OptionsMenuSystem
                 keybinds[i].keyImage.color = baseColour; //reset colour of button as well
             }
         }
-       
     }
+
+    #region editor script
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(UnityCustomKeybinds))]
+    [CanEditMultipleObjects]
+    public class CustomKeybindsEditor : Editor
+    {
+        private SerializedProperty pButtonPrefab,
+            pBaseColour,
+            pSelectedColour,
+            pChangedColour,
+            pIncludeResetButton,
+            pResetButton,
+            pKeybinds;
+
+        private AnimBool resetButtonImplemented = new AnimBool();
+
+        private void OnEnable()
+        {
+            //attach properties
+            pButtonPrefab = serializedObject.FindProperty("buttonPrefab");
+            pBaseColour = serializedObject.FindProperty("baseColour");
+            pSelectedColour = serializedObject.FindProperty("selectedColour");
+            pChangedColour = serializedObject.FindProperty("changedColour");
+            pIncludeResetButton = serializedObject.FindProperty("includeResetButton");
+            pResetButton = serializedObject.FindProperty("resetButton");
+            pKeybinds = serializedObject.FindProperty("keybinds");
+
+            resetButtonImplemented.value = pIncludeResetButton.boolValue; //align bool values
+            resetButtonImplemented.valueChanged.AddListener(Repaint); //add repaint method to this bool
+        }
+
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+
+            //display box and instructions for button prefab
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            {
+                //instructions
+                EditorGUILayout.LabelField("The button prefab must follow a specific format:", EditorStyles.boldLabel);
+                EditorGUI.indentLevel++;
+                EditorGUILayout.LabelField("Root object is a Text object - will display action name",
+                    EditorStyles.label);
+                EditorGUILayout.LabelField("Child object is a Button - will display key currently bound",
+                    EditorStyles.label);
+                EditorGUI.indentLevel--;
+
+                EditorGUILayout.PropertyField(pButtonPrefab);
+            }
+            EditorGUILayout.EndVertical();
+
+            //display box for choosing colours
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            {
+                EditorGUILayout.LabelField("Colours to Show Modified Keybinds", EditorStyles.boldLabel);
+
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(pBaseColour);
+                EditorGUILayout.PropertyField(pSelectedColour);
+                EditorGUILayout.PropertyField(pChangedColour);
+                EditorGUI.indentLevel--;
+            }
+            EditorGUILayout.EndVertical();
+
+            //optional reset button
+            EditorGUILayout.PropertyField(pIncludeResetButton);
+            resetButtonImplemented.target = pIncludeResetButton.boolValue;
+            if (EditorGUILayout.BeginFadeGroup(resetButtonImplemented.faded))
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(pResetButton);
+                EditorGUI.indentLevel--;
+            }
+
+            EditorGUILayout.EndFadeGroup();
+
+            //display box for choosing colours
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            {
+                EditorGUILayout.PropertyField(pKeybinds);
+            }
+            EditorGUILayout.EndVertical();
+
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+#endif
+
+    #endregion
 }

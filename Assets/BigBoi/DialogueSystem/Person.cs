@@ -1,5 +1,10 @@
 using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.AnimatedValues;
+
+#endif
 
 namespace BigBoi.DialogueSystem
 {
@@ -20,15 +25,14 @@ namespace BigBoi.DialogueSystem
         /// <summary>
         /// Shows face if true, else shows "unknown face" set in Manager.cs
         /// </summary>
-        [Tooltip("If the player can see this character. Displays face sprite, otherwise displays 'unknown face' from the manager.")]
+        [Tooltip(
+            "If the player can see this character. Displays face sprite, otherwise displays 'unknown face' from the manager.")]
         public bool seen;
 
         //Alias here
-        [SerializeField]
-        private bool hasAlias;
+        [SerializeField] private bool hasAlias;
 
-        [SerializeField]
-        private string[] alias;
+        [SerializeField] private string[] alias;
 
 
         /// <summary>
@@ -43,15 +47,19 @@ namespace BigBoi.DialogueSystem
                 {
                     return alias[_alias];
                 }
+
                 return name;
             }
+
             return "???";
         }
 
         /// <summary>
         /// Set of face display options for character.
         /// </summary>
-        [SerializeField, Tooltip("Set of default expressions. To add or remove expressions, edit the 'ExpressionSet' struct in Person.cs and the 'Expressions' enum in Manager.cs.")]
+        [SerializeField,
+         Tooltip(
+             "Set of default expressions. To add or remove expressions, edit the 'ExpressionSet' struct in Person.cs and the 'Expressions' enum in Manager.cs.")]
         private ExpressionSet pictures;
 
         /// <summary>
@@ -98,7 +106,58 @@ namespace BigBoi.DialogueSystem
                         return pictures.neutral;
                 }
             }
+
             return Manager.instance.UnknownFace;
         }
     }
+
+    #region editor script
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(Person))]
+    public class PersonEditor : Editor
+    {
+        private SerializedProperty pKnown, pSeen, pHasAlias, pAlias, pPictures;
+
+        private AnimBool HasAlias = new AnimBool();
+
+        private void OnEnable()
+        {
+            pKnown = serializedObject.FindProperty("known");
+            pSeen = serializedObject.FindProperty("seen");
+            pHasAlias = serializedObject.FindProperty("hasAlias");
+            pAlias = serializedObject.FindProperty("alias");
+            pPictures = serializedObject.FindProperty("pictures");
+
+            HasAlias.value = pHasAlias.boolValue;
+            HasAlias.valueChanged.AddListener(Repaint);
+        }
+
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+
+            EditorGUILayout.PropertyField(pKnown);
+            EditorGUILayout.PropertyField(pSeen);
+            EditorGUILayout.PropertyField(pHasAlias);
+
+            //reveal alias creation array if aliases enabled
+            HasAlias.target = pHasAlias.boolValue;
+            if (EditorGUILayout.BeginFadeGroup(HasAlias.faded))
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(pAlias);
+                EditorGUI.indentLevel--;
+            }
+
+            EditorGUILayout.EndFadeGroup();
+
+            EditorGUILayout.PropertyField(pPictures);
+
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+#endif
+
+    #endregion
 }

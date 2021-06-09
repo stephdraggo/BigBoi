@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BigBoi.Menus
+namespace BigBoi.Menus.Generic
 {
     /// <summary>
     /// For when you want the functionality of a dropdown in toggle format.
@@ -10,6 +10,12 @@ namespace BigBoi.Menus
     [AddComponentMenu("BigBoi/Menu System/Methods/Group Toggle Single Select")]
     public class ToggleSingleSelector : MonoBehaviour
     {
+        [SerializeField, Tooltip("Should this group start with a toggle on?")]
+        protected bool toggleOnStart = false;
+
+        [SerializeField, Tooltip("Index of toggle that should start on. No effect if Toggle On Start is not true.")]
+        protected int startToggleIndex = 0;
+
         [SerializeField, Tooltip("Toggles to affect.")]
         protected Toggle[] toggles;
 
@@ -18,20 +24,14 @@ namespace BigBoi.Menus
         /// </summary>
         protected Toggle lastToggled;
 
-        [SerializeField,Tooltip("Should this group start with a toggle on?")]
-        protected bool toggleOnStart = false;
-
-        [SerializeField,Tooltip("Index of toggle that should start on. No effect if Toggle On Start is not true.")]
-        protected int startToggleIndex = 0;
-
-
         protected void Start()
         {
             foreach (Toggle _toggle in toggles)
             {
                 _toggle.SetIsOnWithoutNotify(false);
 
-                _toggle.onValueChanged.AddListener(data => LastToggled(_toggle)); //each toggle must report back here when toggled
+                _toggle.onValueChanged.AddListener(data =>
+                    LastToggled(_toggle)); //each toggle must report back here when toggled
             }
 
             ToggleActiveOnStart();
@@ -58,7 +58,7 @@ namespace BigBoi.Menus
         /// <summary>
         /// If a toggle should start toggled on.
         /// </summary>
-        protected virtual void ToggleActiveOnStart() 
+        protected virtual void ToggleActiveOnStart()
         {
             if (toggleOnStart)
             {

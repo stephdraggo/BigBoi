@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace BigBoi.Menus
+namespace BigBoi.Menus.Generic
 {
     /// <summary>
     /// Inherits all functionality from the base menu class and adds a key to bring up the pause menu.

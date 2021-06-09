@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BigBoi.Menus
+namespace BigBoi.Menus.Generic
 {
     /// <summary>
     /// Inherits all functionality from the base menu class as is for the moment.
