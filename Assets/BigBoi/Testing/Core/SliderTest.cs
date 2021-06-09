@@ -5,11 +5,11 @@ using BigBoi;
 
 public class SliderTest : MonoBehaviour
 {
-    public MinMaxSliderProperty slider;
+    public MinMaxField slider;
 
     private void OnValidate()
     {
-        slider ??= new MinMaxSliderProperty();
+        slider ??= new MinMaxField();
     }
 
     // Start is called before the first frame update

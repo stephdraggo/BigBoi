@@ -1,12 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+#if UNITY_EDITOR
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEditor;
+
+#endif
 
 namespace BigBoi
 {
-    [CustomPropertyDrawer(typeof(MinMaxSliderProperty))]
+    [Serializable]
+    public class MinMaxField
+    {
+        public float cMin, cMax, min = 0, max;
+    }
+
+    #region editor script
+
+#if UNITY_EDITOR
+    [CustomPropertyDrawer(typeof(MinMaxField))]
     public class MinMaxSliderPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect _position, SerializedProperty _property, GUIContent _label)
@@ -22,7 +32,8 @@ namespace BigBoi
             float max = pMax.floatValue;
             Vector2 range = new Vector2(pCMin.floatValue, pCMax.floatValue);
             range = EditorGUI.Vector2Field(_position, "Range", range);
-            EditorGUI.MinMaxSlider(new Rect(_position.x, _position.y * 2, _position.width,_position.height), $"Sub range {min.ToString("0.0")} : {max.ToString("0.0")}", ref min, ref max, range.x, range.y);
+            EditorGUI.MinMaxSlider(new Rect(_position.x, _position.y * 2, _position.width, _position.height),
+                $"Sub range {min:0.0} : {max:0.0}", ref min, ref max, range.x, range.y);
 
             pMin.floatValue = min;
             pMax.floatValue = max;
@@ -32,6 +43,10 @@ namespace BigBoi
             EditorGUI.EndProperty();
         }
 
-        public override float GetPropertyHeight(SerializedProperty _property, GUIContent _label) => EditorGUIUtility.singleLineHeight * 2;
+        public override float GetPropertyHeight(SerializedProperty _property, GUIContent _label) =>
+            EditorGUIUtility.singleLineHeight * 2;
     }
+#endif
+
+    #endregion
 }

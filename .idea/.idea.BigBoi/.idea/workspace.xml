@@ -36,6 +36,11 @@
       <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Person.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/UnityCustomKeybinds.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/Editor/CustomKeybindsEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxSliderPropertyDrawer.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxSliderProperty.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxFieldFloat1.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxFieldFloat.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Testing/Core/SliderTest.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tBg6slYLJK5TOQFj1v0CoVTw9k" />
@@ -94,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622247729774</updated>
       <workItem from="1622247752035" duration="9161000" />
-      <workItem from="1623205392846" duration="1383000" />
+      <workItem from="1623205392846" duration="2646000" />
     </task>
     <servers />
   </component>

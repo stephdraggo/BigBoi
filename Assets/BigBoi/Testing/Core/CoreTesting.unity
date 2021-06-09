@@ -1363,8 +1363,8 @@ MonoBehaviour:
   slider:
     cMin: -10
     cMax: 200
-    min: 57.767372
-    max: 119.020164
+    min: 63.827404
+    max: 119.7749
 --- !u!1 &665446896
 GameObject:
   m_ObjectHideFlags: 0
