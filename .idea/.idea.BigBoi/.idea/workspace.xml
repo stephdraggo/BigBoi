@@ -17,6 +17,25 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/OptionsMenuGeneric.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/Editor/OptionsMenuGenericEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/ToggleSingleSelector.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/TMProHoverText.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/EnablePanelByType.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/GameSceneMenuManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/PressAnyKey.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/BaseMenuManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/Editor/ToggleSingleSelectorEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/EnablePanelByIndex.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/NonGameSceneMenuManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/Editor/SceneFieldDrawer.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/SceneFieldAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/ActionButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Editor/ActionButtonEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Editor/DialogueEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Dialogue.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Editor/PersonEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Person.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/UnityCustomKeybinds.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/Editor/CustomKeybindsEditor.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tBg6slYLJK5TOQFj1v0CoVTw9k" />
@@ -30,6 +49,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -71,6 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622247729774</updated>
       <workItem from="1622247752035" duration="9161000" />
+      <workItem from="1623205392846" duration="1383000" />
     </task>
     <servers />
   </component>

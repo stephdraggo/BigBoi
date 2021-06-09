@@ -1,7 +1,9 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using BigBoi;
+#if UNITY_EDITOR
+using UnityEditor;
+
+#endif
 
 namespace BigBoi.DialogueSystem
 {
@@ -12,14 +14,15 @@ namespace BigBoi.DialogueSystem
     [CreateAssetMenu(menuName = "BigBoi/Dialogue System/Dialogue", fileName = "new dialogue")]
     public class Dialogue : ScriptableObject
     {
-        [SerializeField, Tooltip("Edit visibility of people. Dragging a person object into this set is not necessary for them to be part of this dialogue.")]
+        [SerializeField,
+         Tooltip(
+             "Edit visibility of people. Dragging a person object into this set is not necessary for them to be part of this dialogue.")]
         private People[] people;
 
         [Serializable]
         public class People
         {
             public Person person;
-
         }
 
         /// <summary>
@@ -27,6 +30,7 @@ namespace BigBoi.DialogueSystem
         /// </summary>
         [SerializeField, Tooltip("Add lines to this dialogue set here.")]
         private Line[] lines;
+
         public Line[] Lines => lines;
 
         /// <summary>
@@ -36,4 +40,37 @@ namespace BigBoi.DialogueSystem
         /// <returns>index of passed line</returns>
         public int LineIndex(Line _line) => _line.LinearSearch(lines.ToList());
     }
+
+    #region editor script
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(Dialogue))]
+    public class DialogueEditor : Editor
+    {
+        private SerializedProperty pLines;
+
+
+        private void OnEnable()
+        {
+            pLines = serializedObject.FindProperty("lines");
+        }
+
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            {
+                EditorGUILayout.PropertyField(pLines);
+            }
+            EditorGUILayout.EndVertical();
+
+
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+
+#endif
+
+    #endregion
 }

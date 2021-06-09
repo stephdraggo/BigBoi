@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BigBoi.Menus
+namespace BigBoi.Menus.Generic
 {
     /// <summary>
     /// Simple class that deactivates its object if any key is pressed.
