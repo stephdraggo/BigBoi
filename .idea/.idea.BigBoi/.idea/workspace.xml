@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f1e6fa94-2e64-4857-9d3a-6c1760ae5c9a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/OptionsMenuGeneric.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/Editor/OptionsMenuGenericEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/ToggleSingleSelector.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/TMProHoverText.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/EnablePanelByType.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/GameSceneMenuManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/PressAnyKey.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/BaseMenuManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/Editor/ToggleSingleSelectorEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/EnablePanelByIndex.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/MainMenuSystem/NonGameSceneMenuManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/Editor/SceneFieldDrawer.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/SceneFieldAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/ActionButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Editor/ActionButtonEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Editor/DialogueEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Dialogue.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Editor/PersonEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/DialogueSystem/Person.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/UnityCustomKeybinds.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Menus/OptionsMenuSystem/Editor/CustomKeybindsEditor.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxSliderPropertyDrawer.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxSliderProperty.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxFieldFloat1.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/MinMaxFieldFloat.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Testing/Core/SliderTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/AI/FreeMovement.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="1tBg6slYLJK5TOQFj1v0CoVTw9k" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Builds/BigBoi\BigBoi.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Stephane\Desktop\Builds\BigBoi" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1e6fa94-2e64-4857-9d3a-6c1760ae5c9a" name="Default Changelist" comment="" />
+      <created>1622247729774</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622247729774</updated>
+      <workItem from="1622247752035" duration="9161000" />
+      <workItem from="1623205392846" duration="3338000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

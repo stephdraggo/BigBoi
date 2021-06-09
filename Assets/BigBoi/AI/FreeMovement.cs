@@ -15,12 +15,14 @@ namespace BigBoi.AI
     public class FreeMovement : MonoBehaviour
     {
         protected Vector3 target;
+
         /// <summary>
         /// Entity currently moves towards this position.
         /// </summary>
         public Vector3 Target => target;
 
         #region Speed Variables
+
         [SerializeField, Tooltip("Speed multiplier for this entity.")]
         protected float speed;
 
@@ -35,6 +37,7 @@ namespace BigBoi.AI
 
         [SerializeField, Tooltip("Timed interval for changing speed.")]
         protected float interval;
+
         protected float timer;
 
         /// <summary>
@@ -46,9 +49,8 @@ namespace BigBoi.AI
             OnTargetChange,
             OnTimedInterval,
         }
+
         #endregion
-
-
 
 
         protected virtual void Start()
@@ -61,6 +63,7 @@ namespace BigBoi.AI
                 {
                     speed = range.RanFloat();
                 }
+
                 timer = 0;
             }
         }
@@ -77,7 +80,6 @@ namespace BigBoi.AI
                 }
                 else timer += Time.deltaTime;
             }
-
 
 
             Move(); //call move method
@@ -97,7 +99,8 @@ namespace BigBoi.AI
             }
         }
 
-        public virtual void ChangeSetup(float _speed, Vector2 _range, bool _random = false, SpeedChangeWhen _when = SpeedChangeWhen.OnStartOnly, float _interval = 5)
+        public virtual void ChangeSetup(float _speed, Vector2 _range, bool _random = false,
+            SpeedChangeWhen _when = SpeedChangeWhen.OnStartOnly, float _interval = 5)
         {
             randomiseSpeed = _random;
             speed = _speed;
@@ -124,6 +127,5 @@ namespace BigBoi.AI
         {
             transform.position += Direction() * Time.deltaTime * speed;
         }
-
     }
 }
