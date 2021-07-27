@@ -10,6 +10,7 @@ namespace BigBoi.PlayerController
     /// Sprint and crouch speeds.
     /// Sprint is toggleable.
     /// </summary>
+    [SelectionBase]
     [AddComponentMenu("BigBoi/Player Controllers/2D Movement (Transform)/Complex 2D Movement")]
     public class Controller2DComplex : Controller2DBasic
     {

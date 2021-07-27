@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace BigBoi.PlayerController
 {
+    [SelectionBase]
     public abstract class ControllerBase : MonoBehaviour
     {
         #region Variables

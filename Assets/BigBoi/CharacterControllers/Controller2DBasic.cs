@@ -8,6 +8,7 @@ namespace BigBoi.PlayerController
     /// <summary>
     /// 4-directional movement.
     /// </summary>
+    [SelectionBase]
     [AddComponentMenu("BigBoi/Player Controllers/2D Movement (Transform)/Basic 2D Movement")]
     public class Controller2DBasic : ControllerBase
     {

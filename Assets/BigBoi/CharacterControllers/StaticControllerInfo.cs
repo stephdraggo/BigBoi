@@ -208,9 +208,22 @@ namespace BigBoi.PlayerController
     [CustomPropertyDrawer(typeof(KeyBindDefaults))]
     public class KeyBindDefaultsEditor : PropertyDrawer
     {
-        //number of field spaces taken by the fields total
+        //number of field spaces taken by the fields total, set manually here
         //if 3 fields but one takes 2 lines of space, spacesCount should be 1+1+2=4
-        private const int spacesCount = 4;
+        private static int spacesCount;
+
+        private Rect localPos;
+        private int lineCounter, fieldCounter;
+
+        //one singleLineHeight for each line spaces a given field should take
+        //add lineSpacing and previous field's height to next y coordinate
+        private float singleLineHeight = EditorGUIUtility.singleLineHeight,
+            lineSpacing = EditorGUIUtility.standardVerticalSpacing;
+
+        GUIContent helpBox =
+            new GUIContent(
+                "Do not change the increment unless you want to start counting from a number other than 1.",
+                EditorGUIUtility.IconContent("console.infoicon").image);
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             SerializedProperty pDefaultKeyName = property.FindPropertyRelative("defaultKeyName");
@@ -218,30 +231,51 @@ namespace BigBoi.PlayerController
 
             EditorGUI.BeginProperty(position, label, property);
             {
-                position.height = GetPropertyHeight(property, label);
-                // Calculate rects
-                float singleHeight = EditorGUIUtility.singleLineHeight;
-                Rect keyPos = new Rect(position.x, position.y, position.width, singleHeight);
-                Rect incPos = new Rect(position.x, position.y + 20, position.width, singleHeight);
-                Rect helpPos = new Rect(position.x, position.y + 40, position.width, singleHeight * 2);
+                lineCounter = 0;
+                fieldCounter = 0;
+                localPos = position;
 
-
-                EditorGUI.PropertyField(keyPos, pDefaultKeyName);
-
-                EditorGUI.PropertyField(incPos, pDoublesIncrement);
-
-                EditorGUI.HelpBox(helpPos,
-                    "Do not change the increment unless you want to start counting from a number other than 1.",
-                    MessageType.Info);
+                RenderPropertyField(pDefaultKeyName);
+                RenderPropertyField(pDoublesIncrement);
+                RenderLabelField(helpBox, EditorStyles.helpBox, 2);
             }
             EditorGUI.EndProperty();
         }
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-            return base.GetPropertyHeight(property, label) * spacesCount;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="size">standard line count this field should take up, default 1</param>
+        private void RenderPropertyField(SerializedProperty property, int size = 1) {
+            IncrementRect(size);
+            EditorGUI.PropertyField(localPos, property);
         }
 
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="style"></param>
+        /// <param name="size">standard line count this field should take up, default 1</param>
+        private void RenderLabelField(GUIContent label, GUIStyle style, int size = 1) {
+            IncrementRect(size);
+            EditorGUI.LabelField(localPos, label, style);
+        }
+
+        private void IncrementRect(int size) {
+            fieldCounter++;
+            localPos.y = singleLineHeight * lineCounter + lineSpacing * (fieldCounter + 2);
+            localPos.height = singleLineHeight * size;
+            lineCounter += size;
+            if (spacesCount < lineCounter) {
+                spacesCount = lineCounter;
+            }
+        }
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
+            return base.GetPropertyHeight(property, label) * spacesCount + lineSpacing;
+        }
     }
 
 #endif
