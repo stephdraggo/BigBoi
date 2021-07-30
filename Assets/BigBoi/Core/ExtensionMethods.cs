@@ -132,6 +132,16 @@ namespace BigBoi
             return "p" + char.ToUpper(name[0]) + name.Substring(1);
         }
         #endregion
+
+        #region GameObject.IsInLayerMask
+        /// <summary>
+        /// Check if this object's layer is in the passed layermask
+        /// </summary>
+        public static bool IsInLayerMask(this GameObject obj, LayerMask layerMask)
+        {
+            return ((layerMask.value & (1 << obj.layer)) > 0);
+        }
+        #endregion
         
     }
 }

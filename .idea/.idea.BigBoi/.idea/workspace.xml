@@ -24,7 +24,10 @@
     <setting file="file://$PROJECT_DIR$/../BlobbyBobby/Assets/Scripts/PlayerMove.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BigBoi/Core/Editor/EditorBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ProceduralTerrainGeneration/Assets/Scripts/StaticGeneratorMethods.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../HolidayRPG/Assets/HolidayRPG/Scripts/Movement/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../HolidayRPG/Assets/HolidayRPG/Scripts/Movement/GroundedCheck.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/StaticControllerInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/GroundCheck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DBasic.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -36,10 +39,11 @@
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DBase.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/ControllerBase.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DBasic.cs" />
-      <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DComplex.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/Editor/EditorBase.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/StaticControllerInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/Core/ExtensionMethods.cs" />
-      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/Editor/EditorBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/GroundCheck.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DComplex.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1vpASiBKCJlQ5bYDj0GsinEN0rV" />
@@ -66,10 +70,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15452">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15452" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -98,6 +102,7 @@
       <workItem from="1627248691128" duration="42500000" />
       <workItem from="1627335944935" duration="14875000" />
       <workItem from="1627517545994" duration="6042000" />
+      <workItem from="1627622036321" duration="9746000" />
     </task>
     <servers />
   </component>
