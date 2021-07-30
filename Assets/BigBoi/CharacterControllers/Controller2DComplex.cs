@@ -23,10 +23,19 @@ namespace BigBoi.PlayerController
         [SerializeField]
         protected bool enableVariableSpeeds = true, toggleSprint = false;
 
+        [SerializeField,Tooltip("Use jump mechanic to move upwards instead of directional movement.")]
+        protected bool jumpOverrideUp = false;
+
         //----------------Protected------------------------------
         protected bool canSprint = true, sprintToggledOn = false;
 
         #endregion
+
+        protected override void OnValidate() {
+            base.OnValidate();
+            
+            //grounded collider reference takes a gameobject, adds jump component in runtime if not present
+        }
 
 
         #region Public Methods (SetSprintAvailable - SwapSprintAvailable)
@@ -49,6 +58,17 @@ namespace BigBoi.PlayerController
 
 
         #region Override Methods (Speed)
+
+
+        protected virtual void JumpCheck() {
+            
+        }
+
+        protected virtual IEnumerator Jump() {
+
+            yield return null;
+            
+        }
 
         /// <summary>
         /// Inherits from

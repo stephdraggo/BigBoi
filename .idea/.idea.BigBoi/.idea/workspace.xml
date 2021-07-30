@@ -19,15 +19,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../RapidPrototyping/Assets/Itemising/Scripts/ItemInstance.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ProceduralTerrainGeneration/Assets/Scripts/MapGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ProceduralTerrainGeneration/Assets/Scripts/EndlessTerrain.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../BlobbyBobby/Assets/Scripts/PlayerMove.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../RapidPrototyping/Assets/Itemising/Scripts/ItemGeneric.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../BlobbyBobby/Assets/Scripts/PlayerMove.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BigBoi/Core/Editor/EditorBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ProceduralTerrainGeneration/Assets/Scripts/StaticGeneratorMethods.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../RapidPrototyping/Assets/Itemising/Scripts/GlobalVars.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/StaticControllerInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../RapidPrototyping/Assets/Itemising/Scripts/ItemManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DBasic.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -41,6 +38,8 @@
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DBasic.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/Controller2DComplex.cs" />
       <option value="$PROJECT_DIR$/Assets/BigBoi/CharacterControllers/StaticControllerInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/ExtensionMethods.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigBoi/Core/Editor/EditorBase.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1vpASiBKCJlQ5bYDj0GsinEN0rV" />
@@ -97,7 +96,8 @@
       <option name="presentableId" value="Default" />
       <updated>1627248668658</updated>
       <workItem from="1627248691128" duration="42500000" />
-      <workItem from="1627335944935" duration="14184000" />
+      <workItem from="1627335944935" duration="14875000" />
+      <workItem from="1627517545994" duration="6042000" />
     </task>
     <servers />
   </component>

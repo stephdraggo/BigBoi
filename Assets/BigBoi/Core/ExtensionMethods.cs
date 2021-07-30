@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace BigBoi
 {
@@ -121,5 +123,15 @@ namespace BigBoi
         }
         #endregion
 
+        #region String.NameProperty
+        /// <summary>
+        /// Return a property name in standard editor naming style.
+        /// "test" string becomes "pTest"
+        /// </summary>
+        public static string NameProperty(this string name) {
+            return "p" + char.ToUpper(name[0]) + name.Substring(1);
+        }
+        #endregion
+        
     }
 }

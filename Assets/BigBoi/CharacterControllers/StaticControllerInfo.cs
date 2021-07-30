@@ -46,6 +46,9 @@ namespace BigBoi.PlayerController
         private void Awake() {
             //validate again
             OnValidate();
+
+            string test = "test";
+            Debug.Log(test+" becomes " + test.NameProperty());
         }
 
         #endregion

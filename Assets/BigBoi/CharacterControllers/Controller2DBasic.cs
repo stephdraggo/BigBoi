@@ -28,7 +28,7 @@ namespace BigBoi.PlayerController
 
         #endregion
         
-        #region Override Methods (Direction - Move - Speed)
+        #region Override Methods (Direction - Move)
 
         protected override Vector3 Direction() {
             Vector3 direction = Vector3.zero;
